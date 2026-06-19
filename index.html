@@ -93,6 +93,66 @@ input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); }
   border-color:transparent; color:white; box-shadow:0 0 18px rgba(155,77,255,.4);
 }
 
+/* ═══ DATE NIGHT GENERATOR ═══ */
+.generator-section {
+  background: rgba(155,77,255,.06);
+  border: 1.5px solid rgba(155,77,255,.3);
+  border-radius: 22px; padding: 26px 28px 22px; margin: 26px 0;
+}
+.gen-header { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+.gen-title { font-family:'Pacifico',cursive; font-size:1.6rem; color:var(--purple); }
+.gen-subtitle { font-size:12.5px; color:var(--muted); margin-top:4px; }
+.gen-controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
+.gen-btn {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  border:none; border-radius:14px; padding:11px 24px;
+  color:white; font-family:'Poppins',sans-serif; font-size:14px; font-weight:700;
+  cursor:pointer; transition:opacity .2s; white-space:nowrap;
+}
+.gen-btn:hover { opacity:.88; }
+.gen-regen {
+  background:rgba(155,77,255,.15); border:1.5px solid rgba(155,77,255,.35);
+  border-radius:14px; padding:10px 20px; color:#bb88ff;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:600;
+  cursor:pointer; transition:all .2s; white-space:nowrap;
+}
+.gen-regen:hover { background:rgba(155,77,255,.25); }
+.gen-result { margin-top:20px; }
+.gen-stops {
+  display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; margin-bottom:14px;
+}
+.gen-stop {
+  background:rgba(255,255,255,.06); border:1.5px solid rgba(155,77,255,.25);
+  border-radius:14px; padding:14px 16px; flex:1; min-width:160px;
+}
+.gen-stop-emoji { font-size:26px; margin-bottom:6px; display:block; }
+.gen-stop-name  { font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px; }
+.gen-stop-meta  { font-size:11px; color:var(--muted); line-height:1.5; }
+.gen-stop-label {
+  display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.8px; padding:2px 8px; border-radius:10px; margin-bottom:6px;
+}
+.label-dinner  { background:rgba(255,61,139,.15); color:var(--pink); border:1px solid rgba(255,61,139,.3); }
+.label-activity{ background:rgba(0,212,170,.15);  color:var(--teal); border:1px solid rgba(0,212,170,.3); }
+.label-extra   { background:rgba(245,200,66,.15);  color:var(--gold); border:1px solid rgba(245,200,66,.3); }
+.gen-arrow { font-size:22px; color:var(--purple); align-self:center; flex-shrink:0; }
+.gen-totals {
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  background:rgba(155,77,255,.08); border:1px solid rgba(155,77,255,.2);
+  border-radius:14px; padding:12px 18px; margin-bottom:14px;
+}
+.gen-total-item { font-size:13px; color:var(--muted); }
+.gen-total-item strong { color:var(--text); font-weight:700; }
+.gen-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.gen-add-plan {
+  background:linear-gradient(135deg,var(--teal),#00aaff);
+  border:none; border-radius:12px; padding:10px 20px; color:white;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:600;
+  cursor:pointer; transition:opacity .2s;
+}
+.gen-add-plan:hover { opacity:.88; }
+.gen-empty { text-align:center; padding:24px; color:var(--muted); font-size:13px; }
+
 /* RESULTS BAR */
 .results-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:8px; }
 .results-count { font-size:13px; color:var(--muted); }
@@ -276,6 +336,25 @@ footer .heart { color:var(--pink); }
 
 <div class="controls">
 
+  <!-- Starting Location -->
+  <div class="control-row">
+    <div class="slider-header">
+      <span class="slider-label">📍 Starting Location</span>
+      <span class="val-badge teal" id="locationStatus">Saratoga Springs, UT</span>
+    </div>
+    <div class="gas-inputs">
+      <div class="gas-field" style="flex:2">
+        <label>Utah County & Salt Lake County — city name or zip code</label>
+        <input type="text" id="locationInput" placeholder="e.g. Salt Lake City, Draper, 84101..." style="background:rgba(255,255,255,.07);border:1.5px solid var(--border);border-radius:12px;padding:10px 14px;color:var(--text);font-family:'Poppins',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s" />
+      </div>
+      <div class="gas-field" style="flex:0;justify-content:flex-end">
+        <label>&nbsp;</label>
+        <button id="locationBtn" style="background:linear-gradient(135deg,var(--pink),var(--purple));border:none;border-radius:12px;padding:10px 20px;color:white;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .2s">Update 📍</button>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px">⚠️ Uses straight-line distance — canyon/winding roads may be slightly off. Drive times update automatically.</p>
+  </div>
+
   <!-- Budget -->
   <div class="control-row">
     <div class="slider-header">
@@ -337,6 +416,20 @@ footer .heart { color:var(--pink); }
 
 </div>
 
+<!-- DATE NIGHT GENERATOR -->
+<div class="generator-section">
+  <div class="gen-header">
+    <div>
+      <div class="gen-title">✨ Date Night Generator</div>
+      <div class="gen-subtitle">Auto-builds a date combo using your budget & time above — dinner + activity + maybe a little extra.</div>
+    </div>
+    <button class="gen-btn" id="generateBtn">Generate 🎲</button>
+  </div>
+  <div class="gen-result" id="genResult">
+    <div class="gen-empty">Hit Generate and I'll plan your whole night. 💕</div>
+  </div>
+</div>
+
 <div class="results-bar">
   <div class="results-count"><strong id="resultCount">—</strong> ideas match</div>
   <div class="summary-pill" id="summaryPill">$50/person · Up to 4 hrs</div>
@@ -392,14 +485,15 @@ footer .heart { color:var(--pink); }
 
 </div><!-- /wrapper -->
 <script>
+const $ = id => document.getElementById(id);
 // cost = per person · time = hours · drive = mins from Saratoga Springs
 const ALL = [
   // ── AT HOME / FREE ──
   {e:"🎮",n:"Video Game Night",           cost:0,  t:3, d:0,  desc:"Co-op or chaos mode — either way it's a good night.",                                                                           v:["lowkey","kids","athome"]},
   {e:"♟️",n:"Board Games + Snacks",        cost:0,  t:2, d:0,  desc:"Catan, Ticket to Ride, whatever it is. Someone's going to get a little too competitive.",                                       v:["lowkey","kids","athome"]},
   {e:"🍿",n:"Movie Night at Home",         cost:0,  t:3, d:0,  desc:"Pick something neither of us has seen and actually watch it this time.",                                                         v:["lowkey","kids","athome"]},
-  {e:"🧁",n:"Bake Something Together",     cost:0,  t:2, d:0,  desc:"Pick a recipe and make it. Eating the batter counts as part of the date.",                                                       v:["arts","lowkey","kids","athome"]},
-  {e:"👨‍🍳",n:"Cooking Competition at Home", cost:28, t:3, d:0,  desc:"Each pick a dish, cook at the same time, taste test and judge. Extremely competitive. Extremely fun.",                         v:["arts","lowkey","athome"]},
+  {e:"🧁",n:"Bake Something Together",     cost:0,  t:2, d:0,  desc:"Pick a recipe and make it. Eating the batter counts as part of the date.",                                                       v:["arts","lowkey","kids","athome","food"]},
+  {e:"👨‍🍳",n:"Cooking Competition at Home", cost:28, t:3, d:0,  desc:"Each pick a dish, cook at the same time, taste test and judge. Extremely competitive. Extremely fun.",                         v:["arts","lowkey","athome","food"]},
   {e:"🌷",n:"Plant Flowers Together",      cost:18, t:2, d:10, desc:"Pick something out at a nursery and plant it. Good for the soul and the yard.",                                                  v:["nature","kids","lowkey"]},
 
   // ── FREE OUTSIDE ──
@@ -420,8 +514,8 @@ const ALL = [
   {e:"🎄",n:"Christmas Lights Drive",     cost:5,  t:2, d:20, desc:"Hot chocolate in hand, driving through the best decorated neighborhoods. Classic winter date. (Winter only)",                    v:["lowkey","kids","seasonal"]},
 
   // ── AFFORDABLE ($10–$35/pp) ──
-  {e:"🍦",n:"Ice Cream Date",             cost:10, t:1, d:10, desc:"Drive around and try a place neither of us has been. Gelato, shaved ice, doesn't matter.",                                       v:["lowkey","kids"]},
-  {e:"☕",n:"Bookstore + Coffee",          cost:15, t:2, d:20, desc:"Wander a used bookstore, grab coffee, share what caught your eye. Massively underrated date.",                                   v:["lowkey","arts"]},
+  {e:"🍦",n:"Ice Cream Date",             cost:10, t:1, d:10, desc:"Drive around and try a place neither of us has been. Gelato, shaved ice, doesn't matter.",                                       v:["lowkey","kids","food"]},
+  {e:"☕",n:"Bookstore + Coffee",          cost:15, t:2, d:20, desc:"Wander a used bookstore, grab coffee, share what caught your eye. Massively underrated date.",                                   v:["lowkey","arts","food"]},
   {e:"🛍️",n:"Thrift Date — Buy Each Other an Outfit", cost:20, t:3, d:20, desc:"Each pick a thrift store outfit for the other to wear on a future date. Budget is $20 each. The uglier the better.", v:["adventure","arts","lowkey"], loc:"Various thrift stores"},
   {e:"🎬",n:"Movie Theater",              cost:16, t:3, d:15, desc:"Old fashioned movie date — pick something the other person doesn't know about ahead of time.",                                    v:["lowkey","kids"]},
   {e:"🎡",n:"Corn Maze / Pumpkin Patch",  cost:14, t:2, d:20, desc:"Classic fall date — pick pumpkins, get lost in the maze, drink hot cider. (Fall only)",                                         v:["nature","kids","seasonal"]},
@@ -435,8 +529,8 @@ const ALL = [
   {e:"🔫",n:"Laser Tag",                  cost:25, t:1, d:20, desc:"Grown adults in a dark room. Somehow always a great date.",                                                                       v:["kids","adventure"]},
   {e:"🤸",n:"Trampoline Park",            cost:25, t:2, d:20, desc:"You are never too old for a trampoline park. Try to argue with that.",                                                           v:["kids","adventure"]},
   {e:"🎤",n:"Karaoke Bar",               cost:22, t:3, d:35, desc:"Private room or open floor — someone's doing something embarrassing. That's the whole point.",                                   v:["nightlife","adventure"], loc:"SLC / Provo"},
-  {e:"🍔",n:"Lucky 13",                  cost:25, t:2, d:45, desc:"Iconic SLC bar & grill with wild burgers and great energy. Show up hungry.",                                                     v:["nightlife"], loc:"Salt Lake City"},
-  {e:"🍺",n:"The Venue 1750 / Strap Tank",cost:27, t:3, d:30, desc:"Speakeasy bar + live music venue in Springville. Strap Tank motorcycle brewery is next door. Hidden gem.",                      v:["nightlife"], loc:"Springville"},
+  {e:"🍔",n:"Lucky 13",                  cost:25, t:2, d:45, desc:"Iconic SLC bar & grill with wild burgers and great energy. Show up hungry.",                                                     v:["nightlife","food"], loc:"Salt Lake City"},
+  {e:"🍺",n:"The Venue 1750 / Strap Tank",cost:27, t:3, d:30, desc:"Speakeasy bar + live music venue in Springville. Strap Tank motorcycle brewery is next door. Hidden gem.",                      v:["nightlife","food"], loc:"Springville"},
   {e:"🌅",n:"Great Salt Lake Overlook",   cost:0,  t:2, d:45, desc:"Drive out to see the lake at sunrise or sunset. The colors are insane and almost nobody goes.",                                  v:["nature","adventure"], loc:"Tooele / Magna area"},
   {e:"🚂",n:"Take FrontRunner to SLC",   cost:8,  t:4, d:10, desc:"Hop on the commuter train from Lehi/American Fork and explore SLC without the parking headache.",                                v:["adventure","kids"], loc:"Lehi Station (~10 min)"},
   {e:"🌙",n:"Erda Drive-In Movie",        cost:14, t:3, d:50, desc:"Classic drive-in on Thu/Fri/Sat nights. Bring snacks, a blanket, and park in back.",                                            v:["kids"], loc:"Tooele"},
@@ -493,7 +587,7 @@ const ALL = [
 
   // ── SPLURGE ($80+/pp) ──
   {e:"💍",n:"Jewelry Making Class",     cost:82, t:3, d:40, desc:"Gem Studio SLC or Salt City Smithery — make actual silver rings or earrings and walk out wearing them.",                          v:["arts"], loc:"Salt Lake City"},
-  {e:"🍳",n:"Cooking Class",            cost:90, t:3, d:40, desc:"Learn to cook something actually impressive together. Romantic, delicious, and competitive.",                                      v:["arts","lowkey"], loc:"Salt Lake City"},
+  {e:"🍳",n:"Cooking Class",            cost:90, t:3, d:40, desc:"Learn to cook something actually impressive together. Romantic, delicious, and competitive.",                                      v:["arts","lowkey","food"], loc:"Salt Lake City"},
   {e:"💜",n:"Dig for Amethysts — West Desert", cost:10, t:8, d:100,desc:"Head out to the Wah Wah Mountains or west desert collecting spots and dig for actual amethyst crystals to keep. Pair it with the Salt Flats or Dugway on the same trip.", v:["adventure","nature","roadtrip"], loc:"West Desert (~1.5 hrs)"},
   {e:"📸",n:"Professional Photo Shoot Together", cost:0,  t:3, d:10, desc:"She has the camera and the eye — pick a cool location (Utah Lake, the mountains, downtown Lehi, golden hour anywhere) and just shoot. Formal, fun, or somewhere in between.", v:["arts","lowkey","nature"], loc:"Anywhere near home"},
   {e:"🌈",n:"Interactive Art Gallery — Sandy",   cost:28, t:2, d:30, desc:"Immersive, walk-through art experience in Sandy — projection rooms, surreal installations, perfect for photos and actually feeling something.", v:["arts","adventure"], loc:"Sandy"},
@@ -509,8 +603,8 @@ const ALL = [
   {e:"🎿",n:"Sundance Mountain (Skiing/Snowboarding)",cost:62,t:4,d:40,desc:"Utah has literally the greatest snow on earth. A ski day at Sundance is close and beautiful. (Winter only)",          v:["adventure","seasonal"], loc:"Sundance (~40 min)"},
 
   // ── ANIMALS / UNIQUE ──
-  {e:"🐱",n:"Tinker's Cat Cafe",              cost:14, t:2, d:40, desc:"SLC's original cat cafe — sip local coffee and pastries while hanging out with adoptable cats. Cozy, calming, and weirdly emotional.", v:["animals","kids","lowkey"], loc:"Salt Lake City"},
-  {e:"🐱",n:"MiaoMiao Cafe",                  cost:16, t:2, d:40, desc:"SLC's newer cat cafe with rare imported breeds, handmade desserts, and a dedicated cat room you walk into through a tiny door. Opened 2025.", v:["animals","lowkey"], loc:"Salt Lake City (808 S 200 E)"},
+  {e:"🐱",n:"Tinker's Cat Cafe",              cost:14, t:2, d:40, desc:"SLC's original cat cafe — sip local coffee and pastries while hanging out with adoptable cats. Cozy, calming, and weirdly emotional.", v:["animals","kids","lowkey","food"], loc:"Salt Lake City"},
+  {e:"🐱",n:"MiaoMiao Cafe",                  cost:16, t:2, d:40, desc:"SLC's newer cat cafe with rare imported breeds, handmade desserts, and a dedicated cat room you walk into through a tiny door. Opened 2025.", v:["animals","lowkey","food"], loc:"Salt Lake City (808 S 200 E)"},
   {e:"🐐",n:"Goat Yoga",                      cost:28, t:2, d:25, desc:"Yoga class on a farm while baby goats climb on you. Cross E Ranch in Draper offers sessions — chaotic and worth every second.", v:["animals","adventure","nature"], loc:"Draper"},
   {e:"🌿",n:"Young Living Lavender Farm",      cost:5,  t:4, d:75, desc:"Walk through acres of blooming lavender fields in Mona, UT — free to tour during bloom season (June/July). One of the most beautiful spots in Utah.", v:["nature","lowkey","roadtrip","seasonal"], loc:"Mona, UT (~1.25 hrs)"},
 
@@ -521,10 +615,10 @@ const ALL = [
   {e:"🌙",n:"Night Hike with Headlamps",       cost:5,  t:3, d:20, desc:"Pick a familiar trail and hike it in the dark with headlamps. The mountains feel completely different at night.", v:["adventure","nature"], loc:"Any nearby trail"},
 
   // ── FOOD & DRINK ──
-  {e:"🚚",n:"Food Truck Crawl SLC",           cost:30, t:3, d:40, desc:"SLC has a great rotating food truck scene — hit 3-4 in one evening, try something from each. Check local food truck trackers for locations.", v:["nightlife","adventure"], loc:"Salt Lake City"},
-  {e:"🍰",n:"Dessert Tour Night",             cost:25, t:3, d:35, desc:"Pick 4-5 dessert spots (gelato, crepes, churros, ice cream, boba) and hit them all in one night. No rules.",                                    v:["lowkey","adventure","kids"], loc:"SLC / Provo"},
-  {e:"🍽️",n:"Progressive Dinner",            cost:40, t:3, d:35, desc:"Appetizer at one restaurant, entree at another, dessert somewhere else. Turn dinner into an event.",                                              v:["nightlife","lowkey"], loc:"SLC / Provo"},
-  {e:"🌙",n:"Late Night Diner Run",            cost:18, t:2, d:35, desc:"Find a 24-hr diner after midnight — there's something about pancakes at 1am that just hits different.",                                           v:["nightlife","lowkey"], loc:"SLC area"},
+  {e:"🚚",n:"Food Truck Crawl SLC",           cost:30, t:3, d:40, desc:"SLC has a great rotating food truck scene — hit 3-4 in one evening, try something from each. Check local food truck trackers for locations.", v:["nightlife","adventure","food"], loc:"Salt Lake City"},
+  {e:"🍰",n:"Dessert Tour Night",             cost:25, t:3, d:35, desc:"Pick 4-5 dessert spots (gelato, crepes, churros, ice cream, boba) and hit them all in one night. No rules.",                                    v:["lowkey","adventure","kids","food"], loc:"SLC / Provo"},
+  {e:"🍽️",n:"Progressive Dinner",            cost:40, t:3, d:35, desc:"Appetizer at one restaurant, entree at another, dessert somewhere else. Turn dinner into an event.",                                              v:["nightlife","lowkey","food"], loc:"SLC / Provo"},
+  {e:"🌙",n:"Late Night Diner Run",            cost:18, t:2, d:35, desc:"Find a 24-hr diner after midnight — there's something about pancakes at 1am that just hits different.",                                           v:["nightlife","lowkey","food"], loc:"SLC area"},
 
   // ── ARTS & CREATIVE ──
   {e:"🕯️",n:"Candle Making Bar",             cost:35, t:2, d:30, desc:"Pour and customize your own scented candle to take home. Several shops in SLC and Utah County do these as drop-in classes.", v:["arts","lowkey","kids"], loc:"SLC / Utah County"},
@@ -539,8 +633,8 @@ const ALL = [
   {e:"🏍️",n:"ATV / Side-by-Side Rental",     cost:65, t:4, d:45, desc:"Rent an ATV or side-by-side and hit the trails around Juab or Utah County. Pure adrenaline and incredible views.", v:["adventure","roadtrip"], loc:"Various Utah County rentals"},
 
   // ── NIGHTLIFE / SOCIAL ──
-  {e:"🧠",n:"Trivia Night",                   cost:15, t:3, d:30, desc:"Bar trivia at a local spot in SLC or Provo — most are free to play, just buy drinks. Wildly fun if you're even slightly competitive.", v:["nightlife","lowkey"], loc:"SLC / Provo"},
-  {e:"🔪",n:"Murder Mystery Dinner",          cost:55, t:3, d:40, desc:"Themed dinner where you solve a murder together — SLC has several options from casual to full theatrical productions.",  v:["nightlife","adventure"], loc:"Salt Lake City"},
+  {e:"🧠",n:"Trivia Night",                   cost:15, t:3, d:30, desc:"Bar trivia at a local spot in SLC or Provo — most are free to play, just buy drinks. Wildly fun if you're even slightly competitive.", v:["nightlife","lowkey","food"], loc:"SLC / Provo"},
+  {e:"🔪",n:"Murder Mystery Dinner",          cost:55, t:3, d:40, desc:"Themed dinner where you solve a murder together — SLC has several options from casual to full theatrical productions.",  v:["nightlife","adventure","food"], loc:"Salt Lake City"},
   {e:"🎙️",n:"Open Mic Night",               cost:10, t:3, d:35, desc:"Watch (or participate in) an open mic at a local SLC or Provo venue. Kilby Court and others host them regularly.",      v:["nightlife","arts"], loc:"SLC / Provo"},
 
   // ── WELLNESS ──
@@ -571,7 +665,153 @@ const ALL = [
   {e:"🍔",n:"Chubby's Cafe",            cost:14, t:1, d:5,  desc:"Your neighborhood spot right here in Saratoga Springs — fresh ground burgers, hand-breaded chicken, beer battered fries, and their famous scones. 5 min from home.", v:["lowkey","food","kids"], loc:"Saratoga Springs! · 1284 N Redwood Rd"},
 ];
 
-// ── STATE ──
+// ── LOCATION ──
+const BASE_LAT = 40.3494, BASE_LNG = -111.9038; // Saratoga Springs
+let userLat = BASE_LAT, userLng = BASE_LNG;
+let locationFromSS = true;
+
+// Built-in Utah city/zip lookup — no network needed, works everywhere
+const UTAH_PLACES = [
+  // ── UTAH COUNTY ──
+  {n:["saratoga springs","84045"],lat:40.3494,lng:-111.9038},
+  {n:["lehi","84043"],lat:40.3916,lng:-111.8507},
+  {n:["american fork","84003"],lat:40.3769,lng:-111.7968},
+  {n:["highland"],lat:40.4175,lng:-111.7987},
+  {n:["alpine","84004"],lat:40.4525,lng:-111.7749},
+  {n:["cedar hills"],lat:40.4103,lng:-111.7579},
+  {n:["pleasant grove","84062"],lat:40.3641,lng:-111.7385},
+  {n:["lindon","84042"],lat:40.3438,lng:-111.7199},
+  {n:["eagle mountain","84005"],lat:40.3141,lng:-112.0063},
+  {n:["vineyard","84059"],lat:40.3019,lng:-111.7557},
+  {n:["orem","84057","84058","84097"],lat:40.2969,lng:-111.6946},
+  {n:["provo","84601","84602","84603","84604","84605","84606"],lat:40.2338,lng:-111.6585},
+  {n:["springville","84663"],lat:40.1677,lng:-111.6094},
+  {n:["mapleton","84664"],lat:40.1338,lng:-111.5860},
+  {n:["spanish fork","84660"],lat:40.1149,lng:-111.6549},
+  {n:["payson","84651"],lat:40.0444,lng:-111.7321},
+  {n:["elk ridge"],lat:40.0258,lng:-111.7040},
+  {n:["salem","84653"],lat:40.0519,lng:-111.6722},
+  {n:["woodland hills"],lat:40.0188,lng:-111.6640},
+  {n:["santaquin","84655"],lat:39.9763,lng:-111.7846},
+  {n:["goshen","84633"],lat:40.0127,lng:-111.9011},
+  {n:["genola"],lat:40.0141,lng:-111.8238},
+  {n:["elberta","84626"],lat:39.9760,lng:-111.9625},
+  {n:["fairfield","84013"],lat:40.2638,lng:-112.0878},
+  {n:["benjamin"],lat:40.0833,lng:-111.6667},
+  {n:["lake shore"],lat:40.1833,lng:-111.6833},
+  // ── SALT LAKE COUNTY ──
+  {n:["salt lake city","salt lake","slc","84101","84102","84103","84104","84105","84108","84109","84111","84112","84113","84114","84116","84132","84138","84139","84141","84143","84145","84147","84148","84150","84151","84152","84157","84165","84180"],lat:40.7608,lng:-111.8910},
+  {n:["south salt lake","84115"],lat:40.7196,lng:-111.8880},
+  {n:["millcreek","84106","84124"],lat:40.6866,lng:-111.8741},
+  {n:["murray","84107","84123"],lat:40.6669,lng:-111.8880},
+  {n:["holladay","84117"],lat:40.6677,lng:-111.8224},
+  {n:["cottonwood heights","84121"],lat:40.6197,lng:-111.8155},
+  {n:["midvale","84047"],lat:40.6113,lng:-111.8997},
+  {n:["taylorsville","84118","84129"],lat:40.6677,lng:-111.9388},
+  {n:["kearns"],lat:40.6527,lng:-112.0130},
+  {n:["west valley city","west valley","84119","84120","84128"],lat:40.6916,lng:-112.0011},
+  {n:["magna","84044"],lat:40.7091,lng:-112.1016},
+  {n:["copperton","84006"],lat:40.5571,lng:-112.1119},
+  {n:["sandy","84070","84092","84093","84094"],lat:40.5649,lng:-111.8389},
+  {n:["white city"],lat:40.5588,lng:-111.8586},
+  {n:["draper","84020"],lat:40.5246,lng:-111.8638},
+  {n:["riverton","84065"],lat:40.5218,lng:-111.9391},
+  {n:["bluffdale"],lat:40.4785,lng:-111.9314},
+  {n:["west jordan","84081","84084","84088"],lat:40.6097,lng:-111.9391},
+  {n:["south jordan","84009","84095"],lat:40.5621,lng:-111.9294},
+  {n:["herriman","84096"],lat:40.5138,lng:-112.0327},
+];
+
+function haversineKm(lat1,lng1,lat2,lng2){
+  const R=6371, dLat=(lat2-lat1)*Math.PI/180, dLng=(lng2-lng1)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+
+function geocodeLocation(query) {
+  const q   = query.toLowerCase().trim();
+  const hit = UTAH_PLACES.find(p => p.n.some(alias => q.includes(alias) || alias.includes(q)));
+  const status = $('locationStatus');
+  if (!hit) { status.textContent = '❌ City not found — try a Utah city name or zip'; return; }
+  userLat = hit.lat; userLng = hit.lng;
+  locationFromSS = (userLat===BASE_LAT && userLng===BASE_LNG);
+  // Capitalise the first alias for display
+  const label = hit.n[0].replace(/\b\w/g,c=>c.toUpperCase());
+  status.textContent = '📍 ' + label + ', UT';
+  renderCards();
+  renderPlan();
+}
+
+function adjustedDrive(originalMinutes) { return originalMinutes; } // kept for safety, not used
+
+// Maps each activity's loc string to approximate coordinates
+function getActivityCoords(a) {
+  if (a.d === 0) return null;
+  const loc = (a.loc || '').toLowerCase();
+
+  // Named landmarks / canyons / destinations not in UTAH_PLACES
+  const specials = [
+    {k:['big cottonwood'],                          lat:40.6300, lng:-111.7900},
+    {k:['little cottonwood','albion basin','cecret'],lat:40.5700,lng:-111.7600},
+    {k:['lisa falls'],                              lat:40.5760, lng:-111.7780},
+    {k:['bells canyon'],                            lat:40.5600, lng:-111.7700},
+    {k:['stewart falls','sundance','alpine loop','aspen grove'], lat:40.3929, lng:-111.5779},
+    {k:['bridal veil','provo canyon'],              lat:40.3500, lng:-111.5900},
+    {k:['rock canyon'],                             lat:40.2480, lng:-111.6270},
+    {k:['american fork canyon','timpanogos cave'],  lat:40.4400, lng:-111.6900},
+    {k:['battle creek'],                            lat:40.3700, lng:-111.7100},
+    {k:['spanish fork canyon','5th water'],         lat:40.0900, lng:-111.4600},
+    {k:['maple canyon'],                            lat:39.9700, lng:-111.4200},
+    {k:['guardsmans','toward park city'],           lat:40.6000, lng:-111.6500},
+    {k:['park city'],                               lat:40.6461, lng:-111.4980},
+    {k:['heber'],                                   lat:40.5069, lng:-111.4135},
+    {k:['midway','homestead','crater'],             lat:40.5131, lng:-111.4745},
+    {k:['jordanelle'],                              lat:40.6000, lng:-111.4200},
+    {k:['moab','arches','canyonlands'],             lat:38.5733, lng:-109.5498},
+    {k:['bryce'],                                   lat:37.6283, lng:-112.1669},
+    {k:['zion'],                                    lat:37.2982, lng:-113.0263},
+    {k:['delta','u-dig','fossil'],                  lat:39.3527, lng:-112.5777},
+    {k:['dugway','west desert','geode'],            lat:40.1500, lng:-112.8333},
+    {k:['little sahara','sand dune'],               lat:39.6572, lng:-112.5444},
+    {k:['salt flat','bonneville'],                  lat:40.7767, lng:-113.7427},
+    {k:['spiral jetty','north shore'],              lat:41.4342, lng:-112.6698},
+    {k:['antelope island'],                         lat:40.9000, lng:-112.2100},
+    {k:['layton'],                                  lat:41.0602, lng:-111.9711},
+    {k:['tooele','erda'],                           lat:40.5308, lng:-112.2983},
+    {k:['kyhv','lookout'],                          lat:40.2000, lng:-111.5800},
+    {k:['cascade springs'],                         lat:40.4500, lng:-111.5000},
+    {k:['tibble fork','silver lake'],               lat:40.5500, lng:-111.6500},
+  ];
+
+  for (const s of specials) {
+    if (s.k.some(k => loc.includes(k))) return {lat:s.lat, lng:s.lng};
+  }
+
+  // Try UTAH_PLACES — skip zip codes (numbers), only match city names
+  for (const place of UTAH_PLACES) {
+    for (const alias of place.n) {
+      if (!/^\d+$/.test(alias) && alias.length >= 4 && loc.includes(alias)) {
+        return {lat: place.lat, lng: place.lng};
+      }
+    }
+  }
+
+  // No match — activity location unknown, return null (keeps original drive time)
+  return null;
+}
+
+// Returns drive time in minutes adjusted for user's starting location
+function getAdjustedDrive(a) {
+  if (locationFromSS || a.d === 0) return a.d;
+  const coords = getActivityCoords(a);
+  if (!coords) return a.d; // can't determine, keep original
+  // Real straight-line distance from user to activity in km, converted to miles
+  const km    = haversineKm(userLat, userLng, coords.lat, coords.lng);
+  const miles = km * 0.621371;
+  // 0.8 miles/min average speed (consistent with gas calc)
+  return Math.max(a.d === 0 ? 0 : 3, Math.round(miles / 0.8));
+}
+
 let budget = 50, maxTime = 4, vibe = "all";
 let gasPrice = 3.50, carMpg = 28;
 const bucket = new Set();
@@ -583,11 +823,10 @@ function gasCostPerPerson(driveMinutes) {
   if (!driveMinutes) return 0;
   const miles = driveMinutes * 0.8;
   const roundTripGallons = (miles * 2) / carMpg;
-  return Math.round(roundTripGallons * gasPrice); // total for the car, not split
-} // stores activity names
+  return Math.round(roundTripGallons * gasPrice);
+}
 
 // ── HELPERS ──
-const $  = id => document.getElementById(id);
 function fmtCost(c) { return c===0 ? 'FREE' : `~$${c}/person`; }
 function fmtTime(h) { return h<=1 ? '~1 hr' : h<8 ? `~${h} hrs` : 'All Day'; }
 function fmtDrive(d) {
@@ -623,7 +862,8 @@ function renderCards() {
     const inB   = bucket.has(a.n);
     const inP   = datePlan.has(a.n);
     const free  = a.cost===0;
-    const gas   = gasCostPerPerson(a.d);
+    const drive = getAdjustedDrive(a);
+    const gas   = gasCostPerPerson(drive);
     const card  = document.createElement('div');
     card.className = 'card'+(inB?' in-bucket':'')+(inP?' in-plan':'');
     card.innerHTML = `
@@ -637,7 +877,7 @@ function renderCards() {
         ${gas>0?`<span class="chip chip-gas">⛽ ~$${gas} gas total</span>`:''}
         <span class="chip chip-total">💵 Total: ~$${(a.cost * 2) + gas}</span>
         <span class="chip chip-time">⏱ ${fmtTime(a.t)}</span>
-        <span class="chip chip-drive">${fmtDrive(a.d)}</span>
+        <span class="chip chip-drive">${fmtDrive(drive)}</span>
       </div>`;
     card.querySelector('.heart-btn').addEventListener('click',e=>{e.stopPropagation();toggleBucket(a.n);});
     card.querySelector('.plan-btn').addEventListener('click',e=>{e.stopPropagation();togglePlan(a.n);});
@@ -671,7 +911,7 @@ function renderPlan(){
   [...datePlan].forEach(name=>{
     const a = ALL.find(x=>x.n===name);
     if(!a) return;
-    const gas = gasCostPerPerson(a.d);
+    const gas = gasCostPerPerson(getAdjustedDrive(a));
     totalActivity += a.cost * 2;
     totalGas      += gas;
     totalTime     += a.t;
@@ -765,10 +1005,145 @@ $('vibePills').addEventListener('click',e=>{
   renderCards();
 });
 
-// ── INIT ──
+// ── DATE NIGHT GENERATOR ──
+let lastGenerated = [];
+
+function buildDateNight() {
+  const maxB = budget >= 150 ? 300 : budget;
+  const maxT = maxTime >= 10 ? 24 : maxTime;
+
+  // 1. Pick a dinner/food option (restaurants and food activities)
+  const dinnerPool = ALL.filter(a =>
+    a.v.includes('food') &&
+    a.cost <= maxB * 0.6 &&     // dinner shouldn't eat >60% of budget
+    a.t <= maxT * 0.45 &&       // dinner shouldn't take >45% of time
+    a.cost > 0                   // not free food (want a real dinner)
+  );
+
+  // 2. Pick a main activity (non-food)
+  function pickActivity(usedNames, budgetLeft, timeLeft, excludeFood) {
+    return ALL.filter(a =>
+      !usedNames.includes(a.n) &&
+      a.cost <= budgetLeft &&
+      a.t <= timeLeft &&
+      (!excludeFood || !a.v.includes('food')) &&
+      a.d === 0 || a.t >= 1     // skip very trivial things
+    );
+  }
+
+  const shuffle = arr => [...arr].sort(() => Math.random() - .5);
+
+  // Try to build a dinner → activity combo
+  const dinnerOptions = shuffle(dinnerPool);
+  let combo = [];
+
+  for (const dinner of dinnerOptions.slice(0, 10)) {
+    const budgetAfterDinner = maxB - dinner.cost;
+    const timeAfterDinner   = maxT - dinner.t;
+
+    // Find a non-food activity
+    const actPool = shuffle(pickActivity([dinner.n], budgetAfterDinner, timeAfterDinner, true));
+    if (!actPool.length) continue;
+    const activity = actPool[0];
+
+    combo = [dinner, activity];
+
+    // 3. Optional: bonus round (dessert / quick thing)
+    const budgetLeft = budgetAfterDinner - activity.cost;
+    const timeLeft   = timeAfterDinner   - activity.t;
+
+    if (budgetLeft >= 8 && timeLeft >= 1) {
+      const bonusPool = shuffle(ALL.filter(a =>
+        !combo.map(x=>x.n).includes(a.n) &&
+        a.cost <= budgetLeft &&
+        a.t <= timeLeft &&
+        (a.v.includes('food') || a.t <= 1.5) // quick or food
+      ));
+      if (bonusPool.length) combo.push(bonusPool[0]);
+    }
+    break;
+  }
+
+  // Fallback: no dinner found — just pick any two activities
+  if (!combo.length) {
+    const pool = shuffle(ALL.filter(a => a.cost <= maxB && a.t <= maxT));
+    if (pool.length >= 2) {
+      combo = [pool[0]];
+      const second = pool.find(a => a.n !== pool[0].n && a.cost <= maxB - pool[0].cost && a.t <= maxT - pool[0].t);
+      if (second) combo.push(second);
+    } else if (pool.length === 1) {
+      combo = [pool[0]];
+    }
+  }
+
+  return combo;
+}
+
+function renderGenerator(combo) {
+  const el = $('genResult');
+  if (!combo.length) {
+    el.innerHTML = '<div class="gen-empty">Nothing fits that budget & time combo — try loosening the sliders above!</div>';
+    return;
+  }
+
+  const labels  = ['label-dinner','label-activity','label-extra'];
+  const lnames  = ['🍽️ Dinner','⚡ Activity','🍰 Bonus'];
+  lastGenerated = combo;
+
+  // Build stops
+  let stopsHtml = '';
+  combo.forEach((a, i) => {
+    const drive  = getAdjustedDrive(a);
+    const gas    = gasCostPerPerson(drive);
+    if (i > 0) stopsHtml += '<div class="gen-arrow">→</div>';
+    stopsHtml += `
+      <div class="gen-stop">
+        <span class="gen-stop-label ${labels[i]}">${lnames[i]}</span>
+        <span class="gen-stop-emoji">${a.e}</span>
+        <div class="gen-stop-name">${a.n}</div>
+        <div class="gen-stop-meta">
+          ~$${a.cost}/person · ${fmtTime(a.t)}
+          ${a.loc ? `<br>📍 ${a.loc.split('·')[0].trim()}` : ''}
+          ${gas > 0 ? `<br>⛽ ~$${gas} gas` : ''}
+        </div>
+      </div>`;
+  });
+
+  // Totals
+  const totalActivity = combo.reduce((s,a) => s + a.cost * 2, 0);
+  const totalGas      = combo.reduce((s,a) => s + gasCostPerPerson(getAdjustedDrive(a)), 0);
+  const totalTime     = combo.reduce((s,a) => s + a.t, 0);
+  const grand         = totalActivity + totalGas;
+
+  el.innerHTML = `
+    <div class="gen-stops">${stopsHtml}</div>
+    <div class="gen-totals">
+      <div class="gen-total-item">💵 <strong>~$${totalActivity}</strong> for both</div>
+      <div class="gen-total-item">⛽ <strong>~$${totalGas}</strong> gas</div>
+      <div class="gen-total-item">⏱️ <strong>~${totalTime} hrs</strong> total</div>
+      <div class="gen-total-item">🧾 Grand total: <strong>~$${grand}</strong></div>
+    </div>
+    <div class="gen-actions">
+      <button class="gen-regen" id="regenBtn">🔄 Regenerate</button>
+      <button class="gen-add-plan" id="genAddPlan">📅 Add to Date Plan</button>
+    </div>`;
+
+  $('regenBtn').addEventListener('click', () => { renderGenerator(buildDateNight()); });
+  $('genAddPlan').addEventListener('click', () => {
+    lastGenerated.forEach(a => datePlan.add(a.n));
+    renderCards();
+    renderPlan();
+    $('genAddPlan').textContent = '✅ Added!';
+    setTimeout(() => { if($('genAddPlan')) $('genAddPlan').textContent = '📅 Add to Date Plan'; }, 2000);
+  });
+}
+
+$('generateBtn').addEventListener('click', () => { renderGenerator(buildDateNight()); });
 updateSliders();
 renderBucket();
 renderPlan();
+$('locationBtn').addEventListener('click', ()=>{ const q=$('locationInput').value.trim(); if(q) geocodeLocation(q); });
+$('locationInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const q=$('locationInput').value.trim(); if(q) geocodeLocation(q); }});
 </script>
 </body>
 </html>
