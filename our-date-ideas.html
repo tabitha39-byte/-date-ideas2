@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Date Ideas 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080817; --card: #12122a; --card-hover: #1c1c3d;
+  --pink: #ff3d8b; --purple: #9b4dff; --teal: #00d4aa; --gold: #f5c842;
+  --text: #f0eeff; --muted: #8888aa; --border: rgba(155,77,255,0.2);
+}
+body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; }
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 8% 18%,  rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 22% 65%, rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 45% 12%, rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 63% 78%, rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 87% 33%, rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 13% 82%, rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 52% 50%, rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 76% 9%,  rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(2px 2px at 19% 37%, rgba(255,100,200,.45) 0%,transparent 100%),
+    radial-gradient(2px 2px at 71% 68%, rgba(100,150,255,.45) 0%,transparent 100%),
+    radial-gradient(2px 2px at 55% 88%, rgba(0,212,170,.3) 0%,transparent 100%);
+}
+.wrapper { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:0 16px 80px; }
+
+/* HEADER */
+header { text-align:center; padding:50px 20px 28px; }
+.from-tag {
+  display:inline-block; font-size:12px; font-weight:600; letter-spacing:2px;
+  color:var(--pink); text-transform:uppercase; margin-bottom:14px;
+  background:rgba(255,61,139,.12); padding:5px 16px; border-radius:20px;
+  border:1px solid rgba(255,61,139,.3);
+}
+h1 {
+  font-family:'Pacifico',cursive; font-size:clamp(2rem,7vw,3.8rem);
+  background:linear-gradient(135deg,#ff3d8b 0%,#9b4dff 50%,#00d4aa 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  line-height:1.2; margin-bottom:12px;
+}
+.subtitle { color:var(--muted); font-size:14.5px; max-width:460px; margin:0 auto; line-height:1.65; }
+
+/* CONTROLS BOX */
+.controls {
+  background:rgba(18,18,42,.94); border:1px solid var(--border);
+  border-radius:22px; padding:28px 28px 22px; margin:26px 0; backdrop-filter:blur(12px);
+}
+.control-row { margin-bottom:26px; }
+.control-row:last-child { margin-bottom:0; }
+
+/* Slider row: label on left, value badge on right */
+.slider-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:13px; }
+.slider-label { font-size:12.5px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1.1px; }
+
+/* VALUE BADGE — solid pill, always visible */
+.val-badge {
+  font-size:13px; font-weight:700; padding:5px 16px;
+  border-radius:20px; min-width:110px; text-align:center;
+  border:1.5px solid; white-space:nowrap;
+}
+.val-badge.gold  { color:var(--gold);   background:rgba(245,200,66,.14); border-color:rgba(245,200,66,.4); }
+.val-badge.teal  { color:var(--teal);   background:rgba(0,212,170,.12);  border-color:rgba(0,212,170,.4); }
+
+/* Sliders */
+input[type=range] { -webkit-appearance:none; width:100%; height:7px; border-radius:4px; outline:none; cursor:pointer; }
+#budgetSlider { background:linear-gradient(to right,var(--teal),var(--purple),var(--pink)); }
+#timeSlider   { background:linear-gradient(to right,var(--teal),#00aaff,var(--purple)); }
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:white;
+  box-shadow:0 0 0 3px var(--purple),0 4px 14px rgba(0,0,0,.5); cursor:pointer; transition:transform .15s;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); }
+.slider-ticks { display:flex; justify-content:space-between; margin-top:8px; padding:0 2px; }
+.slider-ticks span { font-size:10px; color:var(--muted); font-weight:500; }
+
+/* Vibe pills */
+.vibe-label { font-size:12.5px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1.1px; margin-bottom:13px; }
+.pills { display:flex; flex-wrap:wrap; gap:8px; }
+.pill {
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  color:var(--muted); border-radius:30px; padding:6px 16px; font-size:13px;
+  font-weight:500; cursor:pointer; transition:all .2s; user-select:none;
+}
+.pill:hover { border-color:var(--purple); color:var(--text); }
+.pill.active {
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  border-color:transparent; color:white; box-shadow:0 0 18px rgba(155,77,255,.4);
+}
+
+/* RESULTS BAR */
+.results-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:8px; }
+.results-count { font-size:13px; color:var(--muted); }
+.results-count strong { color:var(--teal); font-size:20px; font-weight:700; }
+.summary-pill { font-size:12px; color:var(--gold); background:rgba(245,200,66,.1); border:1px solid rgba(245,200,66,.25); padding:5px 14px; border-radius:20px; }
+
+/* CARD GRID */
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; }
+
+.card {
+  background:var(--card); border:1.5px solid var(--border);
+  border-radius:18px; padding:20px 18px 16px; transition:all .3s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+}
+.card:hover { border-color:rgba(155,77,255,.55); background:var(--card-hover); transform:translateY(-4px); box-shadow:0 14px 44px rgba(155,77,255,.18); }
+.card.in-bucket { border-color:var(--pink) !important; box-shadow:0 0 22px rgba(255,61,139,.28) !important; }
+.card.in-bucket .heart-btn { color:var(--pink); }
+
+/* Heart button */
+.heart-btn {
+  position:absolute; top:14px; right:14px; background:none; border:none;
+  font-size:22px; cursor:pointer; color:rgba(255,255,255,.2);
+  transition:all .2s; line-height:1; padding:2px;
+  z-index:2;
+}
+.heart-btn:hover { color:var(--pink); transform:scale(1.2); }
+
+.card-emoji { font-size:36px; margin-bottom:10px; line-height:1; display:block; }
+.card-name  { font-size:14.5px; font-weight:700; margin-bottom:7px; color:var(--text); line-height:1.3; padding-right:30px; }
+.card-desc  { font-size:12px; color:var(--muted); line-height:1.6; margin-bottom:14px; }
+.card-loc   { color:#9b4dff; font-size:11px; margin-top:5px; display:block; font-weight:500; }
+.card-meta  { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.chip-cost      { background:rgba(245,200,66,.12); color:var(--gold);  border:1px solid rgba(245,200,66,.3); }
+.chip-cost.free { background:rgba(0,212,170,.12);  color:var(--teal);  border:1px solid rgba(0,212,170,.3); }
+.chip-time      { background:rgba(0,170,255,.12);  color:#44ccff;      border:1px solid rgba(0,170,255,.25); }
+.chip-drive     { background:rgba(255,61,139,.1);  color:#ff88bb;      border:1px solid rgba(255,61,139,.22); }
+
+/* EMPTY STATE */
+.empty { text-align:center; padding:70px 20px; color:var(--muted); grid-column:1/-1; }
+.empty-emoji { font-size:52px; margin-bottom:16px; display:block; }
+.empty h3 { font-size:18px; margin-bottom:8px; color:var(--text); }
+
+/* ═══ BUCKET LIST SECTION ═══ */
+.bucket-section {
+  margin-top:56px;
+  background:rgba(255,61,139,.06);
+  border:1.5px solid rgba(255,61,139,.28);
+  border-radius:22px; padding:28px 28px 24px;
+}
+.bucket-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
+.bucket-title { font-family:'Pacifico',cursive; font-size:1.7rem; color:var(--pink); }
+.bucket-count {
+  font-size:12px; font-weight:700; color:var(--pink);
+  background:rgba(255,61,139,.15); border:1px solid rgba(255,61,139,.35);
+  padding:5px 14px; border-radius:20px;
+}
+.bucket-hint { font-size:12.5px; color:var(--muted); margin-bottom:20px; line-height:1.6; }
+.bucket-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+.bucket-item {
+  background:rgba(255,61,139,.08); border:1px solid rgba(255,61,139,.22);
+  border-radius:14px; padding:14px 14px 12px; display:flex; flex-direction:column; gap:6px;
+  position:relative;
+}
+.bucket-item-top { display:flex; align-items:flex-start; gap:10px; }
+.bucket-item-emoji { font-size:26px; flex-shrink:0; }
+.bucket-item-name  { font-size:13px; font-weight:700; color:var(--text); line-height:1.3; }
+.bucket-remove {
+  position:absolute; top:10px; right:10px; background:none; border:none;
+  color:rgba(255,61,139,.5); cursor:pointer; font-size:16px; padding:2px;
+  transition:color .2s;
+}
+.bucket-remove:hover { color:var(--pink); }
+.bucket-empty { text-align:center; padding:36px 20px; color:var(--muted); grid-column:1/-1; }
+.bucket-empty span { display:block; font-size:40px; margin-bottom:12px; }
+.bucket-empty p { font-size:13.5px; line-height:1.7; }
+
+footer { text-align:center; padding:36px 20px 0; color:var(--muted); font-size:12px; line-height:1.9; }
+footer .heart { color:var(--pink); }
+
+@media(max-width:520px) {
+  .controls { padding:20px 16px; }
+  header { padding:38px 10px 22px; }
+  .bucket-section { padding:22px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="from-tag">💌 curated just for you, babe</div>
+  <h1>Our Date Ideas</h1>
+  <p class="subtitle">Slide your budget + how much time you've got — I'll show you what we can do. ❤️ heart anything to add it to our bucket list together.</p>
+</header>
+
+<div class="controls">
+
+  <!-- Budget -->
+  <div class="control-row">
+    <div class="slider-header">
+      <span class="slider-label">💰 Budget per person</span>
+      <span class="val-badge gold" id="budgetDisplay">$50 / person</span>
+    </div>
+    <input type="range" id="budgetSlider" min="0" max="150" value="50" step="5">
+    <div class="slider-ticks">
+      <span>Free</span><span>$25</span><span>$50</span><span>$75</span><span>$100</span><span>$125</span><span>$150+</span>
+    </div>
+  </div>
+
+  <!-- Time -->
+  <div class="control-row">
+    <div class="slider-header">
+      <span class="slider-label">⏱️ Time available</span>
+      <span class="val-badge teal" id="timeDisplay">Up to 4 hrs</span>
+    </div>
+    <input type="range" id="timeSlider" min="1" max="10" value="4" step="1">
+    <div class="slider-ticks">
+      <span>1 hr</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>All Day</span>
+    </div>
+  </div>
+
+  <!-- Vibe -->
+  <div class="control-row">
+    <div class="vibe-label">✨ Vibe</div>
+    <div class="pills" id="vibePills">
+      <div class="pill active" data-vibe="all">All of it 🙌</div>
+      <div class="pill" data-vibe="nature">Nature 🌿</div>
+      <div class="pill" data-vibe="animals">Animals 🐾</div>
+      <div class="pill" data-vibe="arts">Arts & Crafts 🎨</div>
+      <div class="pill" data-vibe="adventure">Adventure ⚡</div>
+      <div class="pill" data-vibe="nightlife">Nightlife 🍺</div>
+      <div class="pill" data-vibe="kids">Kid-Friendly 👧</div>
+      <div class="pill" data-vibe="lowkey">Low-Key 🛋️</div>
+      <div class="pill" data-vibe="seasonal">Seasonal 🍂</div>
+      <div class="pill" data-vibe="roadtrip">Road Trip 🚙</div>
+      <div class="pill" data-vibe="athome">At Home 🏠</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="results-bar">
+  <div class="results-count"><strong id="resultCount">—</strong> ideas match</div>
+  <div class="summary-pill" id="summaryPill">$50/person · Up to 4 hrs</div>
+</div>
+
+<div class="grid" id="cardGrid"></div>
+
+<!-- BUCKET LIST -->
+<div class="bucket-section">
+  <div class="bucket-header">
+    <div class="bucket-title">💕 Our Bucket List</div>
+    <div class="bucket-count" id="bucketCount">0 saved</div>
+  </div>
+  <p class="bucket-hint">Tap ❤️ on any activity above to save it here. Do this together — build your list of things you actually want to do.</p>
+  <div class="bucket-grid" id="bucketGrid">
+    <div class="bucket-empty">
+      <span>🤍</span>
+      <p>Nothing saved yet!<br>Heart your favorites above<br>and they'll appear here.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Made with <span class="heart">♥</span> just for you &nbsp;·&nbsp; All prices per person, estimated high &nbsp;·&nbsp; Drive times from Saratoga Springs, UT<br>
+  <span style="font-size:11px">❤️ heart any activity to add it to your bucket list together</span></p>
+</footer>
+
+</div><!-- /wrapper -->
+<script>
+// cost = per person · time = hours · drive = mins from Saratoga Springs
+const ALL = [
+  // ── AT HOME / FREE ──
+  {e:"🎮",n:"Video Game Night",           cost:0,  t:3, d:0,  desc:"Co-op or chaos mode — either way it's a good night.",                                                                           v:["lowkey","kids","athome"]},
+  {e:"♟️",n:"Board Games + Snacks",        cost:5,  t:2, d:0,  desc:"Catan, Ticket to Ride, whatever it is. Someone's going to get a little too competitive.",                                       v:["lowkey","kids","athome"]},
+  {e:"🍿",n:"Movie Night at Home",         cost:8,  t:3, d:0,  desc:"Pick something neither of us has seen and actually watch it this time.",                                                         v:["lowkey","kids","athome"]},
+  {e:"🧁",n:"Bake Something Together",     cost:14, t:2, d:0,  desc:"Pick a recipe and make it. Eating the batter counts as part of the date.",                                                       v:["arts","lowkey","kids","athome"]},
+  {e:"👨‍🍳",n:"Cooking Competition at Home", cost:28, t:3, d:0,  desc:"Each pick a dish, cook at the same time, taste test and judge. Extremely competitive. Extremely fun.",                         v:["arts","lowkey","athome"]},
+  {e:"🌷",n:"Plant Flowers Together",      cost:18, t:2, d:10, desc:"Pick something out at a nursery and plant it. Good for the soul and the yard.",                                                  v:["nature","kids","lowkey"]},
+
+  // ── FREE OUTSIDE ──
+  {e:"🥾",n:"Hike Together",              cost:0,  t:3, d:20, desc:"Utah trails are endless. Pack snacks, enjoy the quiet, and get a little lost.",                                                   v:["nature","adventure","kids"]},
+  {e:"🌊",n:"Walk Utah Lake Shore",        cost:0,  t:2, d:5,  desc:"Walk the shoreline right here in Saratoga Springs. Sunset over the lake is genuinely stunning.",                                 v:["nature","kids","lowkey"], loc:"Saratoga Springs (5 min!)"},
+  {e:"🧺",n:"Picnic in the Mountains",    cost:12, t:3, d:30, desc:"A blanket, good food, no phones. Hard to beat honestly.",                                                                         v:["nature","kids","lowkey"]},
+  {e:"🌟",n:"Stargazing Drive",           cost:5,  t:3, d:30, desc:"Drive out past the light pollution, lay on the car hood, and stare at the sky. Utah dark skies are unreal.",                     v:["nature","lowkey","adventure"]},
+  {e:"🌿",n:"Walk Around a Park",         cost:0,  t:1, d:5,  desc:"Simple, free, and honestly underrated. Sometimes that's the whole vibe.",                                                         v:["nature","kids","lowkey"]},
+  {e:"🦆",n:"BYU Botany Pond",            cost:0,  t:1, d:25, desc:"Feed ducks by a little waterfall in Provo. Shockingly charming for zero dollars.",                                               v:["nature","animals","kids","lowkey"], loc:"Provo"},
+  {e:"🌄",n:"Kyhv Mountain Lookout",      cost:0,  t:2, d:35, desc:"Drive-up overlook with sweeping Provo valley views. Go at sunset. Always worth it.",                                             v:["nature","adventure"], loc:"Provo"},
+  {e:"🏔️",n:"Guardsmans Pass Overlook",   cost:0,  t:2, d:50, desc:"Jaw-dropping Wasatch mountain drive toward Park City. Windows down, music loud.",                                                v:["nature","adventure"], loc:"Toward Park City"},
+  {e:"🌸",n:"Conservation Garden Park",   cost:0,  t:2, d:25, desc:"Free botanical garden in West Jordan — giant chess set, walking paths, gorgeous at sunset.",                                     v:["nature","kids","lowkey"], loc:"West Jordan"},
+  {e:"🐄",n:"Wheeler Farm",               cost:0,  t:2, d:30, desc:"Free working farm in Murray — chickens, cows, pigs, horses. Underrated for adults too.",                                         v:["animals","kids","nature"], loc:"Murray"},
+  {e:"🍓",n:"Farmers Market",             cost:10, t:2, d:20, desc:"Walk around, eat weird food, judge each other's produce picks. Great low-key morning.",                                           v:["lowkey","kids"]},
+  {e:"🌙",n:"SoJo Movies in the Moonlight",cost:0, t:3, d:15, desc:"FREE outdoor movies on summer Friday nights in South Jordan — food trucks, crafts, pure magic.",                                 v:["kids","lowkey","seasonal"], loc:"South Jordan"},
+  {e:"🛷",n:"Sledding / Snow Tubing",     cost:18, t:3, d:30, desc:"Find a good hill, bring something to slide on, and be a kid for an afternoon. (Winter only)",                                   v:["adventure","kids","seasonal"]},
+  {e:"❄️",n:"Snowshoeing",               cost:0,  t:3, d:30, desc:"Rent snowshoes and explore a snowy trail together. Peaceful and surprisingly easy. (Winter only)",                                v:["nature","adventure","seasonal"]},
+  {e:"🎄",n:"Christmas Lights Drive",     cost:5,  t:2, d:20, desc:"Hot chocolate in hand, driving through the best decorated neighborhoods. Classic winter date. (Winter only)",                    v:["lowkey","kids","seasonal"]},
+
+  // ── AFFORDABLE ($10–$35/pp) ──
+  {e:"🍦",n:"Ice Cream Date",             cost:10, t:1, d:10, desc:"Drive around and try a place neither of us has been. Gelato, shaved ice, doesn't matter.",                                       v:["lowkey","kids"]},
+  {e:"☕",n:"Bookstore + Coffee",          cost:15, t:2, d:20, desc:"Wander a used bookstore, grab coffee, share what caught your eye. Massively underrated date.",                                   v:["lowkey","arts"]},
+  {e:"🛍️",n:"Thrift Date — Buy Each Other an Outfit", cost:20, t:3, d:20, desc:"Each pick a thrift store outfit for the other to wear on a future date. Budget is $20 each. The uglier the better.", v:["adventure","arts","lowkey"], loc:"Various thrift stores"},
+  {e:"🎬",n:"Movie Theater",              cost:16, t:3, d:15, desc:"Old fashioned movie date — pick something the other person doesn't know about ahead of time.",                                    v:["lowkey","kids"]},
+  {e:"🎡",n:"Corn Maze / Pumpkin Patch",  cost:14, t:2, d:20, desc:"Classic fall date — pick pumpkins, get lost in the maze, drink hot cider. (Fall only)",                                         v:["nature","kids","seasonal"]},
+  {e:"🌻",n:"Sunflower Farm",             cost:14, t:2, d:25, desc:"Walk through sunflower fields and cut a bouquet to take home. Gorgeous photo op too.",                                           v:["nature","kids","seasonal"]},
+  {e:"🌺",n:"Ashton Gardens",             cost:22, t:2, d:10, desc:"Beautiful botanical gardens 10 min away in Lehi — koi pond, fairy garden, and a secret garden.",                                 v:["nature","kids"], loc:"Lehi (10 min!)"},
+  {e:"🦎",n:"Scales & Tails Reptile Zoo", cost:14, t:2, d:30, desc:"Hold snakes, lizards, and birds at this interactive reptile zoo in Kearns. Kids lose their minds.",                              v:["animals","kids"], loc:"Kearns"},
+  {e:"⛸️",n:"Ice Skating",               cost:18, t:2, d:25, desc:"Holding hands required if balance is questionable. No shame.",                                                                    v:["kids","adventure","lowkey"]},
+  {e:"⛳",n:"Mini Golf",                  cost:18, t:1, d:20, desc:"Loser buys ice cream. You already know how this ends.",                                                                           v:["kids","adventure"]},
+  {e:"🕹️",n:"Nickel Arcade",             cost:20, t:2, d:20, desc:"Bring a jar of nickels and compete like it's 1997. So much fun.",                                                                v:["kids","adventure"]},
+  {e:"🎳",n:"Bowling",                    cost:28, t:2, d:20, desc:"Retro lanes, ridiculous rented shoes, trash talk. Hard to have a bad time.",                                                     v:["kids","lowkey"]},
+  {e:"🔫",n:"Laser Tag",                  cost:25, t:1, d:20, desc:"Grown adults in a dark room. Somehow always a great date.",                                                                       v:["kids","adventure"]},
+  {e:"🤸",n:"Trampoline Park",            cost:25, t:2, d:20, desc:"You are never too old for a trampoline park. Try to argue with that.",                                                           v:["kids","adventure"]},
+  {e:"🎤",n:"Karaoke Bar",               cost:22, t:3, d:35, desc:"Private room or open floor — someone's doing something embarrassing. That's the whole point.",                                   v:["nightlife","adventure"], loc:"SLC / Provo"},
+  {e:"🍔",n:"Lucky 13",                  cost:25, t:2, d:45, desc:"Iconic SLC bar & grill with wild burgers and great energy. Show up hungry.",                                                     v:["nightlife"], loc:"Salt Lake City"},
+  {e:"🍺",n:"The Venue 1750 / Strap Tank",cost:27, t:3, d:30, desc:"Speakeasy bar + live music venue in Springville. Strap Tank motorcycle brewery is next door. Hidden gem.",                      v:["nightlife"], loc:"Springville"},
+  {e:"🌅",n:"Great Salt Lake Overlook",   cost:0,  t:2, d:45, desc:"Drive out to see the lake at sunrise or sunset. The colors are insane and almost nobody goes.",                                  v:["nature","adventure"], loc:"Tooele / Magna area"},
+  {e:"🚂",n:"Take FrontRunner to SLC",   cost:8,  t:4, d:10, desc:"Hop on the commuter train from Lehi/American Fork and explore SLC without the parking headache.",                                v:["adventure","kids"], loc:"Lehi Station (~10 min)"},
+  {e:"🌙",n:"Erda Drive-In Movie",        cost:14, t:3, d:50, desc:"Classic drive-in on Thu/Fri/Sat nights. Bring snacks, a blanket, and park in back.",                                            v:["kids"], loc:"Tooele"},
+  {e:"🛴",n:"Scooters Around SLC",        cost:12, t:2, d:40, desc:"Rent Bird or Lime scooters and cruise downtown together. Chaotic and fun every time.",                                           v:["adventure","nightlife"], loc:"Salt Lake City"},
+  {e:"🛒",n:"Dollar Store Gift Challenge",cost:8,  t:2, d:5,  desc:"$5 each to buy the other person a meaningful gift. The rules make you creative. Guaranteed laughs.",                              v:["lowkey","kids","adventure"]},
+  {e:"🎨",n:"Paint Ceramics",             cost:30, t:2, d:35, desc:"Paint a piece and pick it up after firing. Low pressure, creative, actually relaxing.",                                          v:["arts","kids","lowkey"], loc:"Salt Lake City"},
+  {e:"🪓",n:"Axe Throwing",              cost:32, t:2, d:40, desc:"Social Axe Throwing SLC — a coach runs tournament-style games. Way better than you'd expect. $30/person.",                       v:["adventure","nightlife"], loc:"Salt Lake City"},
+  {e:"🔐",n:"Escape Room",               cost:33, t:1, d:30, desc:"Red Giant in Orem (also has rage rooms + splatter rooms) or Escapology in SLC. Great for date energy.",                          v:["adventure","kids"], loc:"Orem / SLC"},
+  {e:"💥",n:"Rage Room / Splatter Room",  cost:35, t:1, d:30, desc:"Smash stuff or get covered in neon paint at Red Giant Orem. Genuinely cathartic and hilarious.",                                 v:["adventure"], loc:"Orem"},
+  {e:"🐢",n:"Tracy Aviary",              cost:16, t:2, d:40, desc:"Bird sanctuary in Liberty Park SLC — flamingos, owls, hawks, and way more than you'd expect.",                                   v:["animals","kids","nature"], loc:"Salt Lake City"},
+  {e:"🦋",n:"Butterfly Biosphere",       cost:13, t:2, d:10, desc:"Walk through a tropical dome full of live butterflies at Thanksgiving Point. Magical for everyone.",                              v:["animals","nature","kids"], loc:"Lehi (Thanksgiving Point, 10 min!)"},
+  {e:"🦕",n:"Museum of Ancient Life",    cost:15, t:3, d:10, desc:"One of the largest dinosaur museums in the US — also at Thanksgiving Point, 10 min from home!",                                  v:["kids","nature"], loc:"Lehi (Thanksgiving Point, 10 min!)"},
+  {e:"🚣",n:"Kayaking / Paddleboarding", cost:22, t:3, d:10, desc:"Rent boards or kayaks on Utah Lake right near us. Gorgeous views of Timpanogos from the water.",                                  v:["nature","adventure","kids"], loc:"Utah Lake (near Saratoga Springs)"},
+  {e:"🧗",n:"Rock Climbing Gym",         cost:28, t:3, d:30, desc:"No experience needed — bouldering walls are perfect for beginners. Rental shoes included.",                                       v:["adventure","kids"], loc:"SLC / Lehi"},
+  {e:"🎯",n:"Shooting Range",            cost:28, t:2, d:25, desc:"Try something neither of us does regularly. Most ranges are very beginner-friendly and staff are helpful.",                       v:["adventure"], loc:"Utah County / SLC"},
+  {e:"🌊",n:"Kayaking Jordanelle",       cost:30, t:3, d:55, desc:"Kayak or paddleboard on Jordanelle Reservoir near Heber — stunning mountain backdrop.",                                          v:["nature","adventure"], loc:"Jordanelle Reservoir"},
+  {e:"🎭",n:"SCERA Outdoor Theater",     cost:18, t:3, d:20, desc:"Outdoor amphitheater shows in Orem — musicals, concerts, under the stars all summer.",                                           v:["arts","nightlife","seasonal"], loc:"Orem"},
+
+  // ── MID-RANGE ($36–$80/pp) ──
+  {e:"🖼️",n:"Utah Museum of Fine Arts",  cost:14, t:3, d:40, desc:"Beautiful fine art museum on the U campus — ancient artifacts to contemporary pieces. Free some days.",                          v:["arts","lowkey"], loc:"Salt Lake City"},
+  {e:"🪞",n:"Museum of Illusions",       cost:30, t:2, d:40, desc:"Bring a tripod — you'll leave with incredible photos and sore cheeks from laughing.",                                            v:["kids","adventure"], loc:"Salt Lake City"},
+  {e:"🦕",n:"Natural History Museum",    cost:27, t:3, d:40, desc:"5 floors of dinosaurs, gems, minerals — legitimately one of the best museums in the entire state.",                               v:["kids","nature"], loc:"Salt Lake City"},
+  {e:"🦈",n:"Living Planet Aquarium",    cost:32, t:3, d:25, desc:"Pet stingrays, see penguins, otters, a clouded leopard, and sloths. Includes a VR ride.",                                        v:["animals","kids","nature"], loc:"Draper"},
+  {e:"🦒",n:"Utah's Hogle Zoo",          cost:27, t:3, d:40, desc:"Feed giraffes, watch the polar bear swim. Buy online to save $2 and skip the line.",                                             v:["animals","kids","nature"], loc:"Salt Lake City"},
+  {e:"👻",n:"Ghost Tour SLC",            cost:33, t:2, d:40, desc:"Salt Lake Ghosts walking tour — haunted history, true crime, 4.9 stars. Actually unsettling.",                                   v:["adventure","nightlife"], loc:"Salt Lake City"},
+  {e:"🕯️",n:"Park City Ghost Tour",     cost:28, t:2, d:50, desc:"Walking ghost + history tour of old Park City main street. Cool town to wander after.",                                          v:["adventure","nightlife"], loc:"Park City"},
+  {e:"😂",n:"Comedy Show",              cost:38, t:2, d:40, desc:"Wiseguys SLC or Provo — live stand-up until your face hurts. Check their schedule ahead.",                                        v:["nightlife","lowkey"], loc:"SLC / Provo"},
+  {e:"🏎️",n:"Go Kart Racing",           cost:42, t:2, d:20, desc:"Chaotic, loud, and extremely fun. Someone is absolutely getting too competitive.",                                                v:["adventure","kids"]},
+  {e:"🎯",n:"Paintball",                cost:44, t:2, d:30, desc:"Bonding through mild suffering. You will leave closer and slightly bruised.",                                                      v:["adventure","kids"]},
+  {e:"🏺",n:"Pottery / Paint Class",    cost:48, t:2, d:40, desc:"Art Haus or Workshop SLC — make something you actually keep forever. No skill needed.",                                           v:["arts","kids","lowkey"], loc:"Salt Lake City"},
+  {e:"🚂",n:"Heber Valley Railroad",    cost:43, t:3, d:50, desc:"Scenic canyon train ride through the Wasatch. Seasonal themed rides for Halloween and Christmas!",                                v:["nature","kids","adventure"], loc:"Heber City"},
+  {e:"🏌️",n:"TopGolf SLC",             cost:40, t:2, d:40, desc:"Driving range with games, food, and great views. You genuinely don't need to be good at golf.",                                   v:["nightlife","adventure"], loc:"Salt Lake City"},
+  {e:"🎤",n:"Live Music / Concert",     cost:38, t:3, d:35, desc:"Check Kilby Court, The Depot, or USANA — SLC has a surprisingly great music scene.",                                              v:["nightlife","arts"], loc:"Salt Lake City"},
+  {e:"🎨",n:"Sip & Paint Night",        cost:38, t:2, d:35, desc:"Guided painting class with drinks — no experience needed and you always leave with something cute.",                               v:["arts","nightlife","lowkey"], loc:"SLC / Provo"},
+  {e:"🏺",n:"Pottery Night SLC",        cost:40, t:2, d:40, desc:"Walk-in wheel throwing or hand-building session. Meditative and somehow always romantic.",                                        v:["arts","lowkey"], loc:"Salt Lake City"},
+  {e:"🔭",n:"Clark Planetarium",        cost:14, t:2, d:40, desc:"Free exhibits (IMAX films extra) — space, universe, and everything that makes you feel small in the best way.",                    v:["nature","kids","lowkey"], loc:"Salt Lake City"},
+  {e:"♨️",n:"Homestead Crater Hot Springs",cost:22,t:3,d:50, desc:"Soak inside a geological dome crater in Midway. Geothermal, cave-like, absolutely wild experience.",                             v:["nature","lowkey","adventure"], loc:"Midway"},
+  {e:"♨️",n:"Saratoga Springs Hot Pools",cost:18, t:2, d:5,  desc:"Natural warm mineral pools near home — look up current access before going. Quietly beautiful.",                                 v:["nature","lowkey"], loc:"Saratoga Springs area"},
+  {e:"🌊",n:"5th Water Hot Springs",    cost:8,  t:5, d:60, desc:"Hike 2.5 miles in through the canyon to reach stunning natural hot springs. The effort is worth every step.",                     v:["nature","adventure","lowkey"], loc:"Spanish Fork Canyon (~1 hr)"},
+  {e:"🚗",n:"Day Car Trip",             cost:30, t:8, d:0,  desc:"Fill the tank, pick a direction, see where Utah takes us. No itinerary allowed.",                                                 v:["adventure","nature","kids","roadtrip"]},
+  {e:"⛏️",n:"U-Dig Fossils",           cost:27, t:8, d:150,desc:"Dig up actual trilobite fossils near Delta and take them home. Guaranteed finds — epic full day.",                                 v:["adventure","kids","roadtrip"], loc:"Delta, UT (~2.5 hrs)"},
+  {e:"💎",n:"Geode Hunting at Dugway",  cost:8,  t:8, d:150,desc:"BLM land in the west desert — geodes literally sitting on the ground. Bring shovels and buckets.",                               v:["adventure","nature","kids","roadtrip"], loc:"West Desert (~2.5 hrs)"},
+  {e:"🏜️",n:"Little Sahara Sand Dunes",cost:10, t:8, d:100,desc:"Massive sand dunes in the Utah desert — bring sand boards, run down hills, and feel like you're on Mars.",                       v:["adventure","nature","roadtrip"], loc:"Juab County (~1.5 hrs)"},
+  {e:"⬜",n:"Bonneville Salt Flats",    cost:5,  t:8, d:90, desc:"Drive out to the famous flat white expanse. Otherworldly photos, total silence, pure Utah weirdness.",                           v:["adventure","nature","roadtrip"], loc:"Tooele County (~1.5 hrs)"},
+  {e:"🏚️",n:"Abandoned Town (Thistle)",cost:0,  t:4, d:45, desc:"Drive to the ghost town of Thistle, UT — abandoned after a massive 1983 landslide. Genuinely eerie and cool.",                   v:["adventure","nature"], loc:"Spanish Fork Canyon (~45 min)"},
+  {e:"🐃",n:"Antelope Island State Park",cost:15,t:4, d:55, desc:"Drive the causeway to an island in the Great Salt Lake with wild bison, antelope, and stunning views.",                           v:["nature","animals","adventure"], loc:"Davis County (~55 min)"},
+  {e:"🏔️",n:"Timpanogos Cave Tour",    cost:12, t:4, d:35, desc:"Hike up the mountain trail then tour lit caves with crystal formations inside. Always impresses.",                                 v:["nature","adventure","kids"], loc:"American Fork Canyon (~35 min)"},
+  {e:"🌿",n:"Bridal Veil Falls Hike",   cost:0,  t:2, d:35, desc:"Short hike to a gorgeous waterfall in Provo Canyon. Easy enough for everyone, still stunning.",                                   v:["nature","kids"], loc:"Provo Canyon (~35 min)"},
+  {e:"🛁",n:"Float Tanks (Sensory Deprivation)",cost:65,t:2,d:25,desc:"Float in complete silence in a salt-filled pod. Either you'll love it or you'll go insane. Either way, memorable.",        v:["lowkey","adventure"], loc:"SLC / Provo"},
+  {e:"💆",n:"Couples Massage",          cost:90, t:2, d:20, desc:"Book side-by-side massages — the most relaxed you'll ever feel. Spring for it at least once.",                                   v:["lowkey"], loc:"Utah County / SLC"},
+  {e:"🦥",n:"Layton Aquarium + Sloth Hug",cost:22,t:4,d:55,desc:"Interactive aquarium in Layton with sloths, bengal cats, stingrays, and parakeets. Take TRAX for extra credit.",               v:["animals","kids","adventure"], loc:"Layton (via TRAX)"},
+  {e:"🐄",n:"Hug Highland Cows",        cost:25, t:1, d:30, desc:"30-min session cuddling fluffy Scottish Highland cows at Fold of Liberty Farms. $22/person. Absolute joy.",                      v:["animals","nature","kids"], loc:"Spanish Fork"},
+  {e:"🧖",n:"Antique Store Shopping",   cost:15, t:2, d:20, desc:"Dig through thrift stores or antique shops and pick one thing for each other. Low pressure and kind of addictive.",              v:["arts","lowkey"]},
+
+  // ── SPLURGE ($80+/pp) ──
+  {e:"💍",n:"Jewelry Making Class",     cost:82, t:3, d:40, desc:"Gem Studio SLC or Salt City Smithery — make actual silver rings or earrings and walk out wearing them.",                          v:["arts"], loc:"Salt Lake City"},
+  {e:"🍳",n:"Cooking Class",            cost:90, t:3, d:40, desc:"Learn to cook something actually impressive together. Romantic, delicious, and competitive.",                                      v:["arts","lowkey"], loc:"Salt Lake City"},
+  {e:"💜",n:"Dig for Amethysts — West Desert", cost:10, t:8, d:100,desc:"Head out to the Wah Wah Mountains or west desert collecting spots and dig for actual amethyst crystals to keep. Pair it with the Salt Flats or Dugway on the same trip.", v:["adventure","nature","roadtrip"], loc:"West Desert (~1.5 hrs)"},
+  {e:"📸",n:"Professional Photo Shoot Together", cost:0,  t:3, d:10, desc:"She has the camera and the eye — pick a cool location (Utah Lake, the mountains, downtown Lehi, golden hour anywhere) and just shoot. Formal, fun, or somewhere in between.", v:["arts","lowkey","nature"], loc:"Anywhere near home"},
+  {e:"🌈",n:"Interactive Art Gallery — Sandy",   cost:28, t:2, d:30, desc:"Immersive, walk-through art experience in Sandy — projection rooms, surreal installations, perfect for photos and actually feeling something.", v:["arts","adventure"], loc:"Sandy"},
+  {e:"✨",n:"Immersive Art Experience — Orem Mall",cost:25,t:2,d:20,desc:"Interactive gallery experience at or near University Mall in Orem — light rooms, mirror mazes, touch-everything exhibits. Bring your camera.", v:["arts","adventure","kids"], loc:"Orem"},
+
+  // ── BUCKET LIST ROAD TRIPS ──
+  {e:"🏜️",n:"Moab Day Trip",           cost:40, t:8, d:215,desc:"Arches, red rock, amazing food — the ultimate Utah adventure. Plan ahead and do it.",                                             v:["nature","adventure","roadtrip"]},
+  {e:"🏔️",n:"Bryce Canyon Day Trip",   cost:22, t:8, d:230,desc:"Hoodoos, orange canyons, and views that don't look real. One of the best drives in America.",                                    v:["nature","adventure","roadtrip"]},
+  {e:"🦁",n:"Zion National Park",       cost:22, t:8, d:180,desc:"Angels Landing, The Narrows, incredible canyon walls. Worth a full weekend but also a hard day trip.",                           v:["nature","adventure","roadtrip"]},
+
+  // ── HORSEBACK / ZIP / OUTDOOR ──
+  {e:"🐴",n:"Horseback Riding",         cost:48, t:2, d:30, desc:"Find a trail ride in Utah County — views of the mountains on horseback. No experience needed.",                                  v:["animals","nature","adventure"]},
+  {e:"🎿",n:"Sundance Mountain (Skiing/Snowboarding)",cost:62,t:4,d:40,desc:"Utah has literally the greatest snow on earth. A ski day at Sundance is close and beautiful. (Winter only)",          v:["adventure","seasonal"], loc:"Sundance (~40 min)"},
+];
+
+// ── STATE ──
+let budget = 50, maxTime = 4, vibe = "all";
+const bucket = new Set(); // stores activity names
+
+// ── HELPERS ──
+const $  = id => document.getElementById(id);
+function fmtCost(c) { return c===0 ? 'FREE' : `~$${c}/person`; }
+function fmtTime(h) { return h<=1 ? '~1 hr' : h<8 ? `~${h} hrs` : 'All Day'; }
+function fmtDrive(d) {
+  if(d===0)  return '📍 At home';
+  if(d<15)   return `🚗 ${d} min`;
+  if(d<60)   return `🚗 ${d} min drive`;
+  return `🚗 ~${(d/60).toFixed(1)} hr drive`;
+}
+function budgetLabel(b){ return b===0?'Free only':b>=150?'$150+/person':`$${b}/person`; }
+function timeLabel(t)  { return t>=10?'All Day':t===1?'Up to 1 hr':`Up to ${t} hrs`; }
+
+// ── RENDER CARDS ──
+function renderCards() {
+  const maxB = budget>=150?9999:budget;
+  const maxT = maxTime>=10?9999:maxTime;
+  const filtered = ALL.filter(a=>{
+    if(a.cost>maxB) return false;
+    if(a.t>maxT)   return false;
+    if(vibe==='all') return true;
+    return a.v.includes(vibe);
+  });
+
+  $('resultCount').textContent = filtered.length;
+  const grid = $('cardGrid');
+  grid.innerHTML = '';
+
+  if(!filtered.length){
+    grid.innerHTML='<div class="empty"><span class="empty-emoji">😔</span><h3>Nothing matches</h3><p>Try bumping the budget or giving yourself more time!</p></div>';
+    return;
+  }
+
+  filtered.forEach(a=>{
+    const inB   = bucket.has(a.n);
+    const free  = a.cost===0;
+    const card  = document.createElement('div');
+    card.className = 'card'+(inB?' in-bucket':'');
+    card.innerHTML = `
+      <button class="heart-btn" data-name="${a.n}" title="Add to bucket list">${inB?'❤️':'🤍'}</button>
+      <span class="card-emoji">${a.e}</span>
+      <div class="card-name">${a.n}</div>
+      <div class="card-desc">${a.desc}${a.loc?`<span class="card-loc">📍 ${a.loc}</span>`:''}</div>
+      <div class="card-meta">
+        <span class="chip chip-cost ${free?'free':''}">${fmtCost(a.cost)}</span>
+        <span class="chip chip-time">⏱ ${fmtTime(a.t)}</span>
+        <span class="chip chip-drive">${fmtDrive(a.d)}</span>
+      </div>`;
+    card.querySelector('.heart-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      toggleBucket(a.n);
+    });
+    grid.appendChild(card);
+  });
+}
+
+// ── BUCKET LIST ──
+function toggleBucket(name){
+  if(bucket.has(name)) bucket.delete(name);
+  else bucket.add(name);
+  renderCards();
+  renderBucket();
+}
+
+function renderBucket(){
+  const grid = $('bucketGrid');
+  $('bucketCount').textContent = bucket.size+(bucket.size===1?' saved':' saved');
+  if(!bucket.size){
+    grid.innerHTML='<div class="bucket-empty"><span>🤍</span><p>Nothing saved yet!<br>Heart your favorites above<br>and they\'ll appear here.</p></div>';
+    return;
+  }
+  grid.innerHTML='';
+  [...bucket].forEach(name=>{
+    const a = ALL.find(x=>x.n===name);
+    if(!a) return;
+    const item = document.createElement('div');
+    item.className='bucket-item';
+    item.innerHTML=`
+      <button class="bucket-remove" data-name="${a.n}" title="Remove">✕</button>
+      <div class="bucket-item-top">
+        <span class="bucket-item-emoji">${a.e}</span>
+        <span class="bucket-item-name">${a.n}</span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">${fmtCost(a.cost)} · ${fmtTime(a.t)}${a.loc?` · 📍 ${a.loc}`:''}</div>`;
+    item.querySelector('.bucket-remove').addEventListener('click',()=>toggleBucket(name));
+    grid.appendChild(item);
+  });
+}
+
+// ── SLIDERS ──
+function updateSliders(){
+  budget  = parseInt($('budgetSlider').value);
+  maxTime = parseInt($('timeSlider').value);
+  const bl=budgetLabel(budget), tl=timeLabel(maxTime);
+  $('budgetDisplay').textContent = bl;
+  $('timeDisplay').textContent   = tl;
+  $('summaryPill').textContent   = `${bl} · ${tl}`;
+  renderCards();
+}
+$('budgetSlider').addEventListener('input', updateSliders);
+$('timeSlider').addEventListener('input', updateSliders);
+
+// ── VIBE PILLS ──
+$('vibePills').addEventListener('click',e=>{
+  const p=e.target.closest('[data-vibe]');
+  if(!p) return;
+  document.querySelectorAll('[data-vibe]').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active');
+  vibe=p.dataset.vibe;
+  renderCards();
+});
+
+// ── INIT ──
+updateSliders();
+renderBucket();
+</script>
+</body>
+</html>
