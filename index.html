@@ -379,6 +379,47 @@ const ALL = [
   // ── HORSEBACK / ZIP / OUTDOOR ──
   {e:"🐴",n:"Horseback Riding",         cost:48, t:2, d:30, desc:"Find a trail ride in Utah County — views of the mountains on horseback. No experience needed.",                                  v:["animals","nature","adventure"]},
   {e:"🎿",n:"Sundance Mountain (Skiing/Snowboarding)",cost:62,t:4,d:40,desc:"Utah has literally the greatest snow on earth. A ski day at Sundance is close and beautiful. (Winter only)",          v:["adventure","seasonal"], loc:"Sundance (~40 min)"},
+
+  // ── ANIMALS / UNIQUE ──
+  {e:"🐱",n:"Tinker's Cat Cafe",              cost:14, t:2, d:40, desc:"SLC's original cat cafe — sip local coffee and pastries while hanging out with adoptable cats. Cozy, calming, and weirdly emotional.", v:["animals","kids","lowkey"], loc:"Salt Lake City"},
+  {e:"🐱",n:"MiaoMiao Cafe",                  cost:16, t:2, d:40, desc:"SLC's newer cat cafe with rare imported breeds, handmade desserts, and a dedicated cat room you walk into through a tiny door. Opened 2025.", v:["animals","lowkey"], loc:"Salt Lake City (808 S 200 E)"},
+  {e:"🐐",n:"Goat Yoga",                      cost:28, t:2, d:25, desc:"Yoga class on a farm while baby goats climb on you. Cross E Ranch in Draper offers sessions — chaotic and worth every second.", v:["animals","adventure","nature"], loc:"Draper"},
+  {e:"🌿",n:"Young Living Lavender Farm",      cost:5,  t:4, d:75, desc:"Walk through acres of blooming lavender fields in Mona, UT — free to tour during bloom season (June/July). One of the most beautiful spots in Utah.", v:["nature","lowkey","roadtrip","seasonal"], loc:"Mona, UT (~1.25 hrs)"},
+
+  // ── NATURE / SCENIC ──
+  {e:"💧",n:"Cascade Springs",                cost:0,  t:3, d:50, desc:"Crystal clear natural spring pools cascading down terraced rock above Heber. Totally free, totally stunning, weirdly unknown.", v:["nature","kids","lowkey"], loc:"Wasatch Mountains above Heber"},
+  {e:"🍂",n:"Alpine Loop Scenic Drive",        cost:0,  t:3, d:30, desc:"One of Utah's most stunning drives — through American Fork Canyon past Timpanogos, Cascade Springs, and Sundance. Best in fall.", v:["nature","adventure","seasonal"], loc:"American Fork Canyon"},
+  {e:"🌀",n:"Spiral Jetty",                   cost:0,  t:5, d:90, desc:"Robert Smithson's famous giant rock spiral art installation on the north shore of the Great Salt Lake. Free, wild, and genuinely like nothing else on earth.", v:["adventure","arts","roadtrip"], loc:"North Shore, Great Salt Lake (~1.5 hrs)"},
+  {e:"🌙",n:"Night Hike with Headlamps",       cost:5,  t:3, d:20, desc:"Pick a familiar trail and hike it in the dark with headlamps. The mountains feel completely different at night.", v:["adventure","nature"], loc:"Any nearby trail"},
+
+  // ── FOOD & DRINK ──
+  {e:"🚚",n:"Food Truck Crawl SLC",           cost:30, t:3, d:40, desc:"SLC has a great rotating food truck scene — hit 3-4 in one evening, try something from each. Check local food truck trackers for locations.", v:["nightlife","adventure"], loc:"Salt Lake City"},
+  {e:"🍰",n:"Dessert Tour Night",             cost:25, t:3, d:35, desc:"Pick 4-5 dessert spots (gelato, crepes, churros, ice cream, boba) and hit them all in one night. No rules.",                                    v:["lowkey","adventure","kids"], loc:"SLC / Provo"},
+  {e:"🍽️",n:"Progressive Dinner",            cost:40, t:3, d:35, desc:"Appetizer at one restaurant, entree at another, dessert somewhere else. Turn dinner into an event.",                                              v:["nightlife","lowkey"], loc:"SLC / Provo"},
+  {e:"🌙",n:"Late Night Diner Run",            cost:18, t:2, d:35, desc:"Find a 24-hr diner after midnight — there's something about pancakes at 1am that just hits different.",                                           v:["nightlife","lowkey"], loc:"SLC area"},
+
+  // ── ARTS & CREATIVE ──
+  {e:"🕯️",n:"Candle Making Bar",             cost:35, t:2, d:30, desc:"Pour and customize your own scented candle to take home. Several shops in SLC and Utah County do these as drop-in classes.", v:["arts","lowkey","kids"], loc:"SLC / Utah County"},
+  {e:"🖼️",n:"SLC Gallery Stroll",            cost:0,  t:3, d:40, desc:"First Friday of every month, SLC galleries open late and it's all free to walk through. Great art, good people, free drinks at some spots.", v:["arts","nightlife","lowkey"], loc:"Salt Lake City (1st Friday)"},
+  {e:"🪨",n:"Gilgal Sculpture Garden",        cost:0,  t:1, d:40, desc:"Free hidden city park with bizarre LDS-themed sculptures — including a sphinx with Joseph Smith's head. Totally unique to SLC. Free.", v:["arts","lowkey","adventure"], loc:"Salt Lake City (749 E 500 S)"},
+
+  // ── ADVENTURE ──
+  {e:"🏹",n:"Archery Range",                  cost:25, t:2, d:25, desc:"Try an archery range — most have beginner instruction included. Surprisingly meditative and weirdly competitive.", v:["adventure","kids"], loc:"Utah County / SLC"},
+  {e:"🚤",n:"Pontoon / Speedboat on Utah Lake",cost:45, t:4, d:10, desc:"Rent a boat on Utah Lake — right next to us in Saratoga Springs. Bring snacks, float around, watch the sunset over the Oquirrhs.", v:["adventure","nature","kids"], loc:"Utah Lake (10 min!)"},
+  {e:"🏔️",n:"Canyoneering (Beginner)",        cost:18, t:5, d:35, desc:"Rappel down slot canyons in the Provo/Spanish Fork area. Multiple guided intro options for people who've never done it.", v:["adventure","nature"], loc:"Utah County canyons"},
+  {e:"🚗",n:"Hot Air Balloon Festival",       cost:0,  t:3, d:25, desc:"Freedom Fest in Provo (July 4th morning) or Sandy Balloon Festival (August) — free to watch as they inflate and launch at sunrise. Magical.", v:["nature","adventure","seasonal"], loc:"Provo / Sandy"},
+  {e:"🏍️",n:"ATV / Side-by-Side Rental",     cost:65, t:4, d:45, desc:"Rent an ATV or side-by-side and hit the trails around Juab or Utah County. Pure adrenaline and incredible views.", v:["adventure","roadtrip"], loc:"Various Utah County rentals"},
+
+  // ── NIGHTLIFE / SOCIAL ──
+  {e:"🧠",n:"Trivia Night",                   cost:15, t:3, d:30, desc:"Bar trivia at a local spot in SLC or Provo — most are free to play, just buy drinks. Wildly fun if you're even slightly competitive.", v:["nightlife","lowkey"], loc:"SLC / Provo"},
+  {e:"🔪",n:"Murder Mystery Dinner",          cost:55, t:3, d:40, desc:"Themed dinner where you solve a murder together — SLC has several options from casual to full theatrical productions.",  v:["nightlife","adventure"], loc:"Salt Lake City"},
+  {e:"🎙️",n:"Open Mic Night",               cost:10, t:3, d:35, desc:"Watch (or participate in) an open mic at a local SLC or Provo venue. Kilby Court and others host them regularly.",      v:["nightlife","arts"], loc:"SLC / Provo"},
+
+  // ── WELLNESS ──
+  {e:"🧖",n:"Korean Spa Day — Jeong",         cost:45, t:3, d:40, desc:"Jeong Spa in SLC — full Korean spa experience with saunas, hot and cold pools, scrubs, and total quiet. Incredibly restorative.", v:["lowkey"], loc:"Salt Lake City"},
+  {e:"🥶",n:"Cold Plunge + Sauna Session",    cost:35, t:2, d:30, desc:"Contrast therapy — sauna heat then cold plunge, repeat. Several wellness studios in Utah now offer this. Addictive once you try it.", v:["lowkey","adventure"], loc:"SLC / Utah County"},
+  {e:"🧘",n:"Yoga Class Together",            cost:22, t:2, d:20, desc:"Take a yoga class side by side — neither of you has to be good at it. It's mostly about the after-class smoothies anyway.", v:["lowkey","wellness"], loc:"Utah County / SLC"},
+  {e:"📵",n:"Digital Detox Day",              cost:10, t:8, d:0,  desc:"No phones for a full day. Pick something from this list that doesn't require screens and actually be present. Wild concept.", v:["lowkey","nature","athome"]},
 ];
 
 // ── STATE ──
