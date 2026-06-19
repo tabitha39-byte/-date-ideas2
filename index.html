@@ -572,10 +572,10 @@ const ALL = [
   {e:"🌊",n:"5th Water Hot Springs",    cost:8,  t:5, d:60, desc:"Hike 2.5 miles in through the canyon to reach stunning natural hot springs. The effort is worth every step.",                     v:["nature","adventure","lowkey"], loc:"Spanish Fork Canyon (~1 hr)"},
   {e:"🚗",n:"Day Car Trip",             cost:30, t:8, d:0,  desc:"Fill the tank, pick a direction, see where Utah takes us. No itinerary allowed.",                                                 v:["adventure","nature","kids","roadtrip"]},
   {e:"⛏️",n:"U-Dig Fossils",           cost:27, t:8, d:150,desc:"Dig up actual trilobite fossils near Delta and take them home. Guaranteed finds — epic full day.",                                 v:["adventure","kids","roadtrip"], loc:"Delta, UT (~2.5 hrs)"},
-  {e:"💎",n:"Geode Hunting at Dugway",  cost:8,  t:8, d:150,desc:"BLM land in the west desert — geodes literally sitting on the ground. Bring shovels and buckets.",                               v:["adventure","nature","kids","roadtrip"], loc:"West Desert (~2.5 hrs)"},
+  {e:"💎",n:"Geode Hunting at Dugway",  cost:8,  t:8, d:90,desc:"BLM land in the west desert — geodes literally sitting on the ground. Bring shovels and buckets.",                               v:["adventure","nature","kids","roadtrip"], loc:"West Desert (~2.5 hrs)"},
   {e:"🏜️",n:"Little Sahara Sand Dunes",cost:10, t:8, d:100,desc:"Massive sand dunes in the Utah desert — bring sand boards, run down hills, and feel like you're on Mars.",                       v:["adventure","nature","roadtrip"], loc:"Juab County (~1.5 hrs)"},
   {e:"⬜",n:"Bonneville Salt Flats",    cost:5,  t:8, d:90, desc:"Drive out to the famous flat white expanse. Otherworldly photos, total silence, pure Utah weirdness.",                           v:["adventure","nature","roadtrip"], loc:"Tooele County (~1.5 hrs)"},
-  {e:"🏚️",n:"Abandoned Town (Thistle)",cost:0,  t:4, d:45, desc:"Drive to the ghost town of Thistle, UT — abandoned after a massive 1983 landslide. Genuinely eerie and cool.",                   v:["adventure","nature"], loc:"Spanish Fork Canyon (~45 min)"},
+  {e:"🏚️",n:"Abandoned Town (Thistle)",cost:0,  t:4, d:55, desc:"Drive to the ghost town of Thistle, UT — abandoned after a massive 1983 landslide. Genuinely eerie and cool.",                   v:["adventure","nature"], loc:"Spanish Fork Canyon (~45 min)"},
   {e:"🐃",n:"Antelope Island State Park",cost:15,t:4, d:55, desc:"Drive the causeway to an island in the Great Salt Lake with wild bison, antelope, and stunning views.",                           v:["nature","animals","adventure"], loc:"Davis County (~55 min)"},
   {e:"🏔️",n:"Timpanogos Cave Tour",    cost:12, t:4, d:35, desc:"Hike up the mountain trail then tour lit caves with crystal formations inside. Always impresses.",                                 v:["nature","adventure","kids"], loc:"American Fork Canyon (~35 min)"},
   {e:"🌿",n:"Bridal Veil Falls Hike",   cost:0,  t:2, d:35, desc:"Short hike to a gorgeous waterfall in Provo Canyon. Easy enough for everyone, still stunning.",                                   v:["nature","kids"], loc:"Provo Canyon (~35 min)"},
@@ -596,7 +596,7 @@ const ALL = [
   // ── BUCKET LIST ROAD TRIPS ──
   {e:"🏜️",n:"Moab Day Trip",           cost:40, t:8, d:215,desc:"Arches, red rock, amazing food — the ultimate Utah adventure. Plan ahead and do it.",                                             v:["nature","adventure","roadtrip"]},
   {e:"🏔️",n:"Bryce Canyon Day Trip",   cost:22, t:8, d:230,desc:"Hoodoos, orange canyons, and views that don't look real. One of the best drives in America.",                                    v:["nature","adventure","roadtrip"]},
-  {e:"🦁",n:"Zion National Park",       cost:22, t:8, d:180,desc:"Angels Landing, The Narrows, incredible canyon walls. Worth a full weekend but also a hard day trip.",                           v:["nature","adventure","roadtrip"]},
+  {e:"🦁",n:"Zion National Park",       cost:22, t:8, d:285,desc:"Angels Landing, The Narrows, incredible canyon walls. Worth a full weekend but also a hard day trip.",                           v:["nature","adventure","roadtrip"]},
 
   // ── HORSEBACK / ZIP / OUTDOOR ──
   {e:"🐴",n:"Horseback Riding",         cost:48, t:2, d:30, desc:"Find a trail ride in Utah County — views of the mountains on horseback. No experience needed.",                                  v:["animals","nature","adventure"]},
@@ -611,7 +611,7 @@ const ALL = [
   // ── NATURE / SCENIC ──
   {e:"💧",n:"Cascade Springs",                cost:0,  t:3, d:50, desc:"Crystal clear natural spring pools cascading down terraced rock above Heber. Totally free, totally stunning, weirdly unknown.", v:["nature","kids","lowkey"], loc:"Wasatch Mountains above Heber"},
   {e:"🍂",n:"Alpine Loop Scenic Drive",        cost:0,  t:3, d:30, desc:"One of Utah's most stunning drives — through American Fork Canyon past Timpanogos, Cascade Springs, and Sundance. Best in fall.", v:["nature","adventure","seasonal"], loc:"American Fork Canyon"},
-  {e:"🌀",n:"Spiral Jetty",                   cost:0,  t:5, d:90, desc:"Robert Smithson's famous giant rock spiral art installation on the north shore of the Great Salt Lake. Free, wild, and genuinely like nothing else on earth.", v:["adventure","arts","roadtrip"], loc:"North Shore, Great Salt Lake (~1.5 hrs)"},
+  {e:"🌀",n:"Spiral Jetty",                   cost:0,  t:5, d:115, desc:"Robert Smithson's famous giant rock spiral art installation on the north shore of the Great Salt Lake. Free, wild, and genuinely like nothing else on earth.", v:["adventure","arts","roadtrip"], loc:"North Shore, Great Salt Lake (~1.5 hrs)"},
   {e:"🌙",n:"Night Hike with Headlamps",       cost:5,  t:3, d:20, desc:"Pick a familiar trail and hike it in the dark with headlamps. The mountains feel completely different at night.", v:["adventure","nature"], loc:"Any nearby trail"},
 
   // ── FOOD & DRINK ──
@@ -651,7 +651,7 @@ const ALL = [
   {e:"🏔️",n:"Cecret Lake",                   cost:0,  t:2, d:50, desc:"Little Cottonwood Canyon (Albion Basin) — 1.7 mile RT to a stunning alpine lake surrounded by wildflowers in summer. Easy and absolutely gorgeous.", v:["nature","kids","lowkey"], loc:"Albion Basin, Little Cottonwood (~50 min)"},
   {e:"🌈",n:"Bridal Veil Falls",              cost:0,  t:1, d:35, desc:"Provo Canyon — 607-foot cascade visible from the road with a short easy trail to the base. One of the tallest waterfalls in Utah.", v:["nature","kids","lowkey"], loc:"Provo Canyon (~35 min)"},
   {e:"🪨",n:"Rock Canyon",                    cost:0,  t:3, d:25, desc:"Provo — beautiful canyon trail up to 4 miles RT, easy and shaded. Feels like you're deep in the mountains within 5 minutes of the city.", v:["nature","adventure","kids"], loc:"Provo (~25 min)"},
-  {e:"🕳️",n:"Maple Canyon Slot Canyon",      cost:0,  t:3, d:45, desc:"Central Utah County — hike through a stunning conglomerate rock slot canyon. 3 miles RT, moderate, unlike anything else in the area.", v:["nature","adventure"], loc:"Fountain Green (~45 min)"},
+  {e:"🕳️",n:"Maple Canyon Slot Canyon",      cost:0,  t:3, d:85, desc:"Central Utah County — hike through a stunning conglomerate rock slot canyon. 3 miles RT, moderate, unlike anything else in the area.", v:["nature","adventure"], loc:"Fountain Green (~45 min)"},
 
   // ── SPECIFIC RESTAURANTS ──
   {e:"🌮",n:"Sol Agave — American Fork", cost:50, t:2, d:10, desc:"YOUR favorite — upscale Mexican right in American Fork, 10 min from home. Get the ceviche, carnitas, and butter cake. Reservation on their app is a must.", v:["nightlife","lowkey","food"], loc:"American Fork (10 min!) · 749 W 100 N"},
@@ -663,6 +663,18 @@ const ALL = [
   {e:"🍜",n:"Thai Better",              cost:18, t:2, d:20, desc:"Fast casual Thai in South Jordan — solid curry, stir fry, and noodles. Great for a low-key dinner before an activity.", v:["lowkey","food","kids"], loc:"South Jordan · 11511 S 4000 W"},
   {e:"🍺",n:"Bohemian Brewery",         cost:28, t:2, d:35, desc:"Czech/German gastropub in Midvale — craft lagers, massive pretzels, pierogis, and a cozy cabin atmosphere with a fireplace. Super unique.", v:["nightlife","food"], loc:"Midvale · 94 E Fort Union Blvd"},
   {e:"🍔",n:"Chubby's Cafe",            cost:14, t:1, d:5,  desc:"Your neighborhood spot right here in Saratoga Springs — fresh ground burgers, hand-breaded chicken, beer battered fries, and their famous scones. 5 min from home.", v:["lowkey","food","kids"], loc:"Saratoga Springs! · 1284 N Redwood Rd"},
+
+  // ── HIGHLY RATED RESTAURANTS ──
+  {e:"🌿",n:"Black Sheep Cafe",          cost:28, t:2, d:25, desc:"#2 in Provo on TripAdvisor — contemporary Southwestern with a Native American twist. Navajo tacos, blue corn enchiladas, bison burgers. Creative and genuinely special.", v:["nightlife","lowkey","food"], loc:"Provo · 19 N University Ave"},
+  {e:"🌾",n:"Communal",                  cost:48, t:2, d:25, desc:"Farm-to-table, locally sourced seasonal menus, beautiful shared farm-table seating. One of the most consistently praised restaurants in Utah County. Reserve ahead.", v:["nightlife","food"], loc:"Provo · 102 N University Ave"},
+  {e:"🌊",n:"La Jolla Groves",           cost:48, t:2, d:30, desc:"Fine dining New American cuisine with a romantic atmosphere in Provo's Riverwoods. Consistently tops Utah County date night lists. Get a reservation.", v:["nightlife","food"], loc:"Provo · Riverwoods Pkwy"},
+  {e:"🔥",n:"R&R BBQ",                   cost:22, t:2, d:25, desc:"9-time BBQ grand champion. Brisket, ribs, and pork smoked low and slow — named Utah's BBQ crown by City Weekly. Casual but genuinely exceptional.", v:["lowkey","food","kids"], loc:"Provo & multiple SLC locations"},
+  {e:"🏔️",n:"The Tree Room at Sundance", cost:75, t:3, d:45, desc:"Robert Redford's mountain resort restaurant — stunning canyon setting, upscale American cuisine, best for a very special occasion. Worth every penny.", v:["nightlife","food"], loc:"Sundance Mountain Resort (~45 min)"},
+  {e:"🌱",n:"Block Restaurant",           cost:40, t:2, d:20, desc:"Hip farm-to-table in Orem with a seasonal, ever-changing menu. Incredible brunch and dinner. Try the block toast with apple jam. Highly rated for date nights.", v:["nightlife","lowkey","food"], loc:"Orem · ~20 min"},
+  {e:"⭐",n:"Urban Hill",                 cost:68, t:2, d:40, desc:"Chef Nick Zocco — James Beard Award semifinalist AND winner of Beat Bobby Flay 2025. Open kitchen, creative American, dry-aged ribeye. One of SLC's absolute best right now.", v:["nightlife","food"], loc:"Salt Lake City · 510 S 300 W"},
+  {e:"🌲",n:"Log Haven",                 cost:70, t:3, d:40, desc:"Legendary romantic canyon restaurant tucked in Millcreek Canyon — waterfall outside, fireplace inside. Consistently named most romantic restaurant in Utah. Reserve well ahead.", v:["nightlife","food"], loc:"Millcreek Canyon · ~40 min"},
+  {e:"🇮🇹",n:"Tuscany",                 cost:60, t:2, d:40, desc:"Italian fine dining in a gorgeous villa with string lights, stone patios, and garden. A local institution for anniversaries — you forget you're even in Utah.", v:["nightlife","food"], loc:"Salt Lake City · 2832 E 6200 S"},
+  {e:"🍛",n:"Bombay House",              cost:22, t:2, d:25, desc:"Legendary Utah Indian restaurant with a cult following. People drive from all over the state for it. Consistently packed — go early or make a reservation.", v:["nightlife","lowkey","food","kids"], loc:"Provo · 463 N University Ave"},
 ];
 
 // ── LOCATION ──
@@ -914,7 +926,7 @@ function renderPlan(){
     const gas = gasCostPerPerson(getAdjustedDrive(a));
     totalActivity += a.cost * 2;
     totalGas      += gas;
-    totalTime     += a.t;
+    totalTime     += a.t + (getAdjustedDrive(a) * 2 / 60); // activity + round trip drive
 
     const item = document.createElement('div');
     item.className='plan-item';
@@ -937,7 +949,7 @@ function renderPlan(){
   });
 
   const grand = totalActivity + totalGas;
-  const hrs   = totalTime >= 1 ? `~${totalTime} hr${totalTime!==1?'s':''}` : '<1 hr';
+  const hrs   = `~${totalTime < 1 ? '<1' : totalTime.toFixed(1)} hrs (incl. driving)`;
   $('ptActivity').textContent = `~$${totalActivity}`;
   $('ptGas').textContent      = totalGas>0 ? `~$${totalGas}` : 'No drive needed 🏠';
   $('ptTime').textContent     = hrs;
@@ -1027,7 +1039,7 @@ function buildDateNight() {
       a.cost <= budgetLeft &&
       a.t <= timeLeft &&
       (!excludeFood || !a.v.includes('food')) &&
-      a.d === 0 || a.t >= 1     // skip very trivial things
+      (a.d === 0 || a.t >= 1)   // fix: parentheses so this doesn't bypass everything above
     );
   }
 
@@ -1086,8 +1098,17 @@ function renderGenerator(combo) {
     return;
   }
 
-  const labels  = ['label-dinner','label-activity','label-extra'];
-  const lnames  = ['🍽️ Dinner','⚡ Activity','🍰 Bonus'];
+  // Smart label based on what the activity actually IS, not its position
+  function getStopLabel(a, isLast, total) {
+    if (a.v.includes('food')) {
+      // Third item that's food = dessert/bonus
+      if (isLast && total === 3) return {cls:'label-extra',   text:'🍰 Dessert'};
+      return                          {cls:'label-dinner',  text:'🍽️ Dinner'};
+    }
+    if (isLast && total === 3)   return {cls:'label-extra',   text:'🎉 Extra'};
+    return                              {cls:'label-activity', text:'⚡ Activity'};
+  }
+
   lastGenerated = combo;
 
   // Build stops
@@ -1095,10 +1116,11 @@ function renderGenerator(combo) {
   combo.forEach((a, i) => {
     const drive  = getAdjustedDrive(a);
     const gas    = gasCostPerPerson(drive);
+    const label  = getStopLabel(a, i === combo.length - 1, combo.length);
     if (i > 0) stopsHtml += '<div class="gen-arrow">→</div>';
     stopsHtml += `
       <div class="gen-stop">
-        <span class="gen-stop-label ${labels[i]}">${lnames[i]}</span>
+        <span class="gen-stop-label ${label.cls}">${label.text}</span>
         <span class="gen-stop-emoji">${a.e}</span>
         <div class="gen-stop-name">${a.n}</div>
         <div class="gen-stop-meta">
@@ -1112,7 +1134,7 @@ function renderGenerator(combo) {
   // Totals
   const totalActivity = combo.reduce((s,a) => s + a.cost * 2, 0);
   const totalGas      = combo.reduce((s,a) => s + gasCostPerPerson(getAdjustedDrive(a)), 0);
-  const totalTime     = combo.reduce((s,a) => s + a.t, 0);
+  const totalTime     = combo.reduce((s,a) => s + a.t + (getAdjustedDrive(a) * 2 / 60), 0);
   const grand         = totalActivity + totalGas;
 
   el.innerHTML = `
@@ -1120,7 +1142,7 @@ function renderGenerator(combo) {
     <div class="gen-totals">
       <div class="gen-total-item">💵 <strong>~$${totalActivity}</strong> for both</div>
       <div class="gen-total-item">⛽ <strong>~$${totalGas}</strong> gas</div>
-      <div class="gen-total-item">⏱️ <strong>~${totalTime} hrs</strong> total</div>
+      <div class="gen-total-item">⏱️ <strong>~${totalTime.toFixed(1)} hrs</strong> incl. driving</div>
       <div class="gen-total-item">🧾 Grand total: <strong>~$${grand}</strong></div>
     </div>
     <div class="gen-actions">
